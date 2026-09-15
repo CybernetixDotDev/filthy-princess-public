@@ -27,3 +27,14 @@ export type PublicInvitableEvent = {
   invitation_only: boolean;
   interest_enabled: boolean;
 };
+
+export type PublicRetreatFormat = "solo" | "couples" | "private_group" | "join_a_group";
+
+export type PublicRetreatProduct = {
+  id: string;
+  slug: string;
+  name: string;
+  positioning: string;
+  allowed_formats: PublicRetreatFormat[];
+  sort_order: number;
+};

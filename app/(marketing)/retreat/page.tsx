@@ -1,10 +1,14 @@
 import { CTA, Scribble } from "@/components/editorial/primitives";
 import { Reveal } from "@/components/editorial/reveal";
 import Image from "next/image";
+import { RetreatInterest } from "@/components/retreat/retreat-interest";
+import { getPublicRetreatProducts } from "@/lib/supabase/retreats";
 
 export const metadata = { title: "The Retreat", description: "The Retreat." };
 
-export default function RetreatPage() {
+export default async function RetreatPage() {
+  const products = await getPublicRetreatProducts();
+
   return (
     <main className="bg-(--fp-black) text-(--fp-dirty-white)">
       <section className="relative overflow-hidden bg-(--fp-black)">
@@ -56,6 +60,10 @@ export default function RetreatPage() {
             <p className="display mt-3 -rotate-1 text-2xl italic text-(--fp-blush) sm:text-3xl">I need a few secrets.</p>
           </Reveal>
         </div>
+      </section>
+
+      <section className="relative overflow-hidden border-y border-white/10 bg-(--fp-charcoal) px-5 py-24 text-(--fp-dirty-white) sm:px-8 sm:py-36">
+        <RetreatInterest products={products.data} />
       </section>
 
       <section className="relative overflow-hidden bg-(--fp-black) px-5 py-28 sm:px-8 sm:py-44">
