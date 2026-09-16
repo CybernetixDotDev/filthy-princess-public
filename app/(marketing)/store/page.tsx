@@ -1,5 +1,6 @@
-import { CTA, EditorialSection } from "@/components/editorial/primitives";
+import { EditorialSection } from "@/components/editorial/primitives";
 import { ProductImage } from "@/components/store/product-image";
+import { StorePurchaseForm } from "@/components/store/store-purchase-form";
 import { getPublicStoreProducts } from "@/lib/supabase/store";
 import type { PublicStoreProduct } from "@/lib/supabase/types";
 
@@ -56,7 +57,7 @@ function Product({ product, index }: { product: PublicStoreProduct; index: numbe
           <p className="mt-5 max-w-md text-base leading-7 text-white/55">{product.description}</p>
           <div className="mt-8 flex flex-wrap items-center gap-7">
             <span className="display text-3xl">{formatPrice(product)}</span>
-            {product.product_type === "membership" && <CTA href="/inner-sanctum">Discover the key</CTA>}
+            <StorePurchaseForm productId={product.id} />
           </div>
         </div>
       </div>

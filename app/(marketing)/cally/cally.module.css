@@ -1,0 +1,131 @@
+﻿.cally {
+  --ink: #000;
+  --ivory: #f1e8dc;
+  --rose: #c88979;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  overflow: clip;
+}
+/* Allow viewport sticky positioning without changing the shared SiteFrame. */
+:global(.min-h-screen):has(.cally) { overflow: clip; }
+:global(div):has(> .cally) > :global(footer) { display: none; }
+.cally figure, .cally h1, .cally h2, .cally p { margin: 0; }
+.cally img { display: block; width: 100%; height: auto; }
+.display { font-size: clamp(2.45rem, 10vw, 7rem); font-weight: 400; line-height: .96; letter-spacing: -.04em; text-wrap: balance; }
+.whisper { color: #efd2bd; font-size: clamp(1.4rem, 5vw, 2.2rem); font-style: italic; line-height: 1.3; }
+
+.arrival { position: relative; min-height: 100svh; }
+.fireField { position: absolute; inset: 0; overflow: hidden; }
+.fireField::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0008, transparent 75%), linear-gradient(180deg, #0002, transparent 40%, #000d); pointer-events: none; }
+.fireField img { height: 100%; object-fit: cover; object-position: 68% center; }
+.arrivalCopy { position: relative; z-index: 1; min-height: 100svh; display: flex; align-items: flex-end; padding: 0 7vw 12svh; }
+.arrivalCopy .display { max-width: 15ch; text-shadow: 0 3px 25px #0008; }
+.closeBridge { min-height: 70svh; display: grid; place-items: center; padding: 23svh 7vw 19svh; }
+
+/* Grid tracks keep notes legible on narrow screens. Overlaps are limited to
+   a photographic edge; the copy always keeps its own layout space. */
+.biography {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.8rem .65rem;
+  width: min(90vw, 1200px);
+  margin: 18svh auto 0;
+  padding: 0 0 12svh;
+  align-items: center;
+  font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  font-size: clamp(1rem, 3.9vw, 1.5rem);
+  line-height: 1.5;
+}
+.name { grid-column: 1 / 4; font-size: clamp(3rem, 12vw, 6rem); font-weight: 400; transform: rotate(-6deg); }
+.correction { grid-column: 2 / 7; justify-self: end; transform: rotate(3deg); }
+.correction p:first-child { color: #af9a91; text-decoration: line-through; text-decoration-color: var(--rose); }
+.correction p:last-child { margin-top: .35rem; margin-left: -.8rem; color: #e4ada5; transform: rotate(-5deg); }
+.everydayPhoto { grid-column: 1 / 7; width: 87%; justify-self: center; transform: rotate(-2deg); box-shadow: 0 20px 60px #000; }
+.pretty { grid-column: 1 / 5; position: relative; margin-top: -2.4rem !important; color: #f6ddd1; transform: rotate(-5deg); text-shadow: 0 2px 8px #000; }
+.mess { grid-column: 3 / 7; justify-self: end; font-size: 1.18em; color: #e8aaa0; transform: rotate(5deg); }
+.laugh { grid-column: 1 / 4; transform: rotate(-3deg); }
+.distracted { grid-column: 4 / 7; padding-top: 2rem; font-size: .84em; color: #bfaea5; transform: rotate(7deg); }
+.sincere { grid-column: 1 / 6; margin-top: 1.5rem !important; max-width: 24ch; font-family: var(--font-display); font-style: italic; font-size: 1.45em; line-height: 1.3; }
+.sincere span { font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .65em; color: var(--rose); }
+.curious { grid-column: 3 / 7; margin-top: 1rem !important; font-size: .85em; transform: rotate(-4deg); color: #b6a59c; }
+.changeOfEnergy { min-height: 90svh; display: grid; place-items: center; padding: 40svh 8vw 17svh; font-style: italic; font-size: clamp(1.4rem, 5vw, 2.4rem); text-align: center; }
+
+/* The default is a readable sequential composition, including without JS. */
+.gift { background: #000; }
+.giftStage { position: relative; }
+.giftPhoto { margin: 0 auto 18svh !important; width: min(100%, 740px); }
+.giftPhoto img { height: auto; object-fit: contain; }
+.darkSweep, .blackRise { display: none; pointer-events: none; }
+.dressedWords { padding: 16svh 6vw; text-align: center; }
+.dressedWords .display { font-size: clamp(1.7rem, 6.7vw, 5.6rem); line-height: 1.25; }
+.dressedLine { white-space: nowrap; }
+.scribbledUn { display: inline-block; color: #d59b91; font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; font-style: italic; font-size: .8em; font-weight: 400; letter-spacing: -.09em; margin-right: .07em; transform: translateY(-.1em) rotate(-13deg); }
+.gift[data-choreographed] { height: 1300svh; }
+.gift[data-choreographed] .giftStage { position: sticky; top: 0; height: 100svh; height: 100dvh; overflow: hidden; }
+.gift[data-choreographed] .photographs { position: absolute; inset: 0; isolation: isolate; }
+.gift[data-choreographed] .giftPhoto { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0 !important; visibility: hidden; }
+.gift[data-choreographed] .giftPhoto:first-child { visibility: visible; }
+.gift[data-choreographed] .giftPhoto img { width: 100%; height: 100%; object-fit: contain; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent), linear-gradient(transparent, #000 4%, #000 96%, transparent); mask-composite: intersect; mask-size: min(100vw, 66.6667dvh) min(150vw, 100dvh); mask-position: center; mask-repeat: no-repeat; }
+/* All five are 2:3 portraits. Contain preserves hair, hands, legs and clothing
+   on both tall phones and wide displays; black edges join the source backdrop. */
+.giftPhoto:nth-child(1) img { object-position: 50% 52%; }
+.giftPhoto:nth-child(2) img { object-position: 50% 50%; }
+.giftPhoto:nth-child(3) img { object-position: 50% 51%; }
+.giftPhoto:nth-child(4) img { object-position: 48% 50%; }
+.giftPhoto:nth-child(5) img { object-position: 50% 50%; }
+.gift[data-choreographed] .darkSweep { display: block; position: absolute; z-index: 2; left: 0; right: 0; top: -25%; height: 150%; background: linear-gradient(transparent, #000a 22%, #000 43%, #000 57%, #000a 78%, transparent); transform: translateY(100%); }
+.gift[data-choreographed] .blackRise { display: block; position: absolute; z-index: 3; inset: -20% 0 0; background: linear-gradient(transparent, #000a 16%, #000 32%); transform: translateY(110%); }
+.gift[data-choreographed] .dressedWords { position: absolute; z-index: 4; inset: 0; display: grid; place-items: center; padding: 6vw; opacity: 0; }
+
+.attentionScene { position: relative; padding-top: 55svh; min-height: 300svh; }
+.dressedPhoto { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.dressedPhoto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #0005, transparent 30%, #0003 60%, #000c); pointer-events: none; }
+.dressedPhoto img { height: 100%; object-fit: cover; object-position: 28% center; }
+.attention { position: relative; z-index: 1; margin-top: -35svh; min-height: 180svh; padding: 38svh 7vw 80svh; pointer-events: none; }
+.attention .display { font-size: clamp(2.4rem, 9vw, 6rem); max-width: 17ch; text-shadow: 0 3px 25px #000; }
+.invitationScene { padding: 120svh 7vw 28svh; background: #000; }
+.silence { min-height: 65svh; }
+.undressingHold { min-height: 65svh; display: grid; place-items: center; text-align: center; }
+.undressingHold .whisper { font-size: clamp(1.15rem, 4.5vw, 1.7rem); }
+.silence[data-choreographed] { height: 305svh; }
+.silence[data-choreographed] .undressingHold { position: sticky; top: 0; height: 65svh; }
+.lastSilence { height: 90svh; }
+.invitation { display: block; width: fit-content; margin-left: auto; padding: 14px 0; color: #e8c9bd; font-size: clamp(1.6rem, 5.6vw, 2.5rem); font-style: italic; text-decoration: underline; text-decoration-color: #c889795e; text-decoration-thickness: 1px; text-underline-offset: 10px; }
+.invitation:hover { color: var(--ivory); text-decoration-color: currentColor; }
+.invitation:focus-visible { outline: 1px solid #e8c9bd; outline-offset: 9px; }
+
+@media (min-width: 768px) {
+  .arrivalCopy { padding: 0 0 19svh 12vw; }
+  .fireField img { object-position: center; }
+  .closeBridge { min-height: 76svh; }
+  .biography { grid-template-columns: 1fr 1.7fr 1fr; gap: 3rem; padding-top: 6svh; }
+  .name { grid-column: 1; grid-row: 1; align-self: end; }
+  .correction { grid-column: 2 / 4; grid-row: 1; justify-self: center; }
+  .everydayPhoto { grid-column: 2; grid-row: 2 / 6; width: 100%; }
+  .pretty { grid-column: 1; grid-row: 2; margin-top: 0 !important; text-align: right; }
+  .mess { grid-column: 3; grid-row: 3; margin-left: -2rem !important; }
+  .laugh { grid-column: 1; grid-row: 4; }
+  .distracted { grid-column: 3; grid-row: 5; padding-top: 0; }
+  .sincere { grid-column: 1 / 3; grid-row: 6; justify-self: center; }
+  .curious { grid-column: 3; grid-row: 6; }
+  .dressedPhoto img { object-position: center; }
+  .attention { padding-left: 48vw; padding-right: 6vw; }
+  .attention .display { font-size: clamp(3rem, 5vw, 6rem); }
+  .invitationScene { padding-inline: 14vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gift[data-choreographed] { height: auto; }
+  .gift[data-choreographed] .giftStage { position: relative; height: auto; overflow: visible; }
+  .gift[data-choreographed] .photographs { position: static; opacity: 1 !important; }
+  .gift[data-choreographed] .giftPhoto { position: static; height: auto; width: min(100%, 740px); margin: 0 auto 18svh !important; visibility: visible !important; }
+  .gift[data-choreographed] .darkSweep, .gift[data-choreographed] .blackRise { display: none; }
+  .gift[data-choreographed] .dressedWords { position: static; opacity: 1 !important; padding: 16svh 6vw; }
+  .attentionScene { min-height: 0; }
+  .dressedPhoto { position: relative; }
+  .attention { min-height: 0; margin-top: -40svh; padding-top: 0; padding-bottom: 20svh; }
+  .silence[data-choreographed] { height: auto; }
+  .silence[data-choreographed] .undressingHold { position: static; }
+  .undressingHold .whisper { opacity: 1 !important; }
+}

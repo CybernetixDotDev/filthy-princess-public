@@ -1,61 +1,73 @@
-import {
-  CTA,
-  LipstickKiss,
-} from "@/components/editorial/primitives";
-import { Reveal } from "@/components/editorial/reveal";
-import { OpeningRealm } from "@/components/cinematic/opening-realm";
-import Image from "next/image";
+﻿import Image from "next/image";
+import Link from "next/link";
+import styles from "./overture.module.css";
 
 export const metadata = { title: "You found something" };
 
 export default function HomePage() {
   return (
-    <main className="bg-(--fp-black) text-(--fp-dirty-white)">
-      <OpeningRealm />
-
-      <section className="relative overflow-hidden bg-(--fp-dirty-white) px-5 py-20 text-(--fp-black) sm:px-8 sm:py-32">
-        <div className="relative mx-auto max-w-6xl">
-          <div className="relative z-10 max-w-xl">
-            <Reveal>
-              <h2 className="display text-6xl leading-[0.9] sm:text-8xl">YOU LOOKED.</h2>
-              <p className="display mt-4 text-2xl italic text-(--fp-cherry) sm:text-4xl">Of course you did.</p>
-              <p className="mt-10 max-w-md text-lg leading-8 text-(--fp-black)/80 sm:text-xl sm:leading-9">There&rsquo;s something delicious about being curious. About wondering what might happen if you stopped behaving for a minute.</p>
-            </Reveal>
+    <main className={styles.overture}>
+      <section className={styles.discovery} aria-labelledby="discovery-title">
+        <div className={styles.discoveryCopy}>
+          <div className={styles.firstBeat}>
+            <h1 id="discovery-title" className={styles.statement}>YOU FOUND<br />SOMETHING.</h1>
           </div>
-          <div className="relative mt-14 flex justify-center sm:absolute sm:right-0 sm:top-1/2 sm:mt-0 sm:w-[36%] sm:-translate-y-1/2 sm:justify-end">
-            <div className="relative w-[58vw] max-w-xs -rotate-6 bg-(--fp-dirty-white) p-2 pb-6 shadow-[10px_16px_0_rgba(12,11,12,.16)] sm:w-full sm:max-w-sm">
-              <div className="relative aspect-square overflow-hidden bg-(--fp-charcoal)"><Image src="/strawberry2.png" alt="A juicy strawberry" fill sizes="(max-width: 640px) 58vw, 380px" className="object-cover" /></div>
+          <div className={styles.secondBeat}>
+            <p className={styles.aside}>I might have left it<br />where you&apos;d find it.</p>
+          </div>
+        </div>
+        <div className={styles.logoTrack}>
+          {/* One object, carried only through the two discovery beats. */}
+          <div className={styles.travellingLogo}>
+            <Image src="/FilthyPrincessLogo.png" alt="Filthy Princess" width={1536} height={1024} sizes="(max-width: 767px) 62vw, 42vw" loading="eager" fetchPriority="high" />
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.evidence} aria-label="Traces left behind">
+        <figure className={styles.dress}>
+          <Image src="/1afterMidnightDress.png" alt="A dark embroidered dress left on the floor beside a bed." width={1024} height={1536} sizes="(max-width: 767px) 82vw, 42vw" />
+        </figure>
+        <figure className={styles.strawberry}>
+          <Image src="/strawberry2.png" alt="A ripe strawberry." width={1024} height={1024} sizes="(max-width: 767px) 44vw, 20vw" />
+        </figure>
+        <figure className={styles.kiss}>
+          <Image src="/lipstickKiss.png" alt="A lipstick kiss left behind." width={1536} height={1024} sizes="(max-width: 767px) 48vw, 24vw" />
+        </figure>
+      </section>
+
+      <section className={styles.staircase} aria-labelledby="looked-title">
+        <div className={styles.staircaseView}>
+          <Image className={styles.staircasePhoto} src="/2stairwayCally.png" alt="A woman on a dark staircase, looking back over her shoulder." width={1024} height={1536} sizes="(max-width: 767px) 100vw, 80vw" />
+          <div className={styles.staircaseShade} aria-hidden="true" />
+        </div>
+        {/* Scroll distance, not a timer: the photograph gets the first movement. */}
+        <div className={styles.lookingSpace} aria-hidden="true" />
+        <div className={styles.caught}>
+          <h2 id="looked-title" className={styles.statement}>YOU LOOKED.</h2>
+        </div>
+        <div className={styles.answer}>
+          <p className={styles.aside}>Of course you did.</p>
+        </div>
+      </section>
+
+      <section className={styles.release} aria-label="A moment of silence">
+        <div className={styles.breathe}><p>Breathe.</p></div>
+        <div className={styles.curious}><p className={styles.aside}>still curious?</p></div>
+      </section>
+
+      <section className={styles.revelation} aria-labelledby="found-title">
+        <div className={styles.portraitField}>
+          <figure className={styles.portraitFrame}>
+            <div className={styles.portraitRebate}>
+              <Image src="/3callyreveal.png" alt="Cally, holding a strawberry to her lips in a room lit with pink reflections." width={1024} height={1536} sizes="(max-width: 767px) 68vw, 460px" />
             </div>
-          </div>
+            <span className={styles.frameMark} aria-hidden="true" />
+          </figure>
         </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-(--fp-black) px-5 py-24 text-(--fp-dirty-white) sm:px-8 sm:py-36">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <p className="display text-4xl leading-[1.15] sm:text-6xl">Maybe you&rsquo;d show me something.</p>
-            <p className="display mt-4 text-4xl leading-[1.15] text-(--fp-blush) sm:text-6xl">Maybe I&rsquo;d show you something first.</p>
-          </Reveal>
-          <Reveal delay={150} className="mt-20 sm:mt-28">
-            <p className="loud text-2xl tracking-[0.08em] text-(--fp-hot-pink) sm:text-3xl">STILL CURIOUS?</p>
-            <p className="display mt-3 -rotate-2 text-3xl italic leading-none text-(--fp-dirty-white) sm:text-5xl">Good.</p>
-          </Reveal>
-        </div>
-        <LipstickKiss className="pointer-events-none absolute -right-8 bottom-0 w-40 rotate-10 opacity-80 mix-blend-screen sm:w-56" />
-      </section>
-
-      <section className="relative overflow-hidden bg-(--fp-charcoal) px-5 py-20 text-(--fp-dirty-white) sm:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col sm:min-h-[92vh] sm:flex-row sm:items-stretch">
-          <div className="relative min-h-[62svh] w-full sm:min-h-0 sm:w-[56%]">
-            <Image src="/callyreveal.png" alt="Cally, the Filthy Princess" fill sizes="(max-width: 1024px) 100vw, 56vw" className="object-cover object-top" priority />
-          </div>
-          <div className="relative z-10 flex w-full flex-col justify-center py-12 sm:w-[44%] sm:px-12 sm:py-0">
-            <Reveal>
-              <h2 className="display text-5xl leading-[0.9] sm:text-7xl">AND THEN THERE&apos;S CALLY.</h2>
-              <p className="display mt-6 text-2xl leading-tight text-(--fp-blush) sm:text-4xl">Wanna play?</p>
-              <div className="mt-10"><CTA href="/cally">Meet Cally</CTA></div>
-            </Reveal>
-          </div>
+        <div className={styles.resolution}>
+          <h2 id="found-title" className={styles.statement}>YOU FOUND ME.</h2>
+          <Link className={styles.continuation} href="/cally">come say hello.</Link>
         </div>
       </section>
     </main>

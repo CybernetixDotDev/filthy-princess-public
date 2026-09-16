@@ -9,7 +9,7 @@ export default function ExperiencePage() {
     <main className="bg-(--fp-black) text-(--fp-dirty-white)">
       <section className="relative overflow-hidden bg-(--fp-black)">
         <div className="relative h-[80svh] w-full sm:h-screen">
-          <Image src="/ExperienceHero.png" alt="The Cally Experience" fill sizes="100vw" priority className="object-contain object-right sm:object-cover sm:object-right" />
+          <Image src="/8ExperienceHero.png" alt="The Cally Experience" fill sizes="100vw" priority className="object-contain object-right sm:object-cover sm:object-right" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(12,11,12,.88)_0%,rgba(12,11,12,.4)_42%,transparent_72%)]" />
         </div>
         <div className="absolute inset-0 z-10 mx-auto flex max-w-7xl flex-col justify-end px-5 pb-14 sm:justify-center sm:px-8 sm:pb-0">
@@ -72,14 +72,14 @@ export default function ExperiencePage() {
             <p className="loud text-2xl tracking-[0.08em] text-(--fp-blush) sm:text-3xl">YOU DO.</p>
             <h3 className="display mt-3 text-3xl leading-[0.95] sm:text-5xl">Sexual Awakening<br />&amp; Self-Discovery</h3>
             <p className="mt-7 max-w-md text-lg leading-8 text-(--fp-dirty-white)/75 sm:text-xl sm:leading-9">You are the centre of the experience.<br />The object of Cally&rsquo;s affection, attention and curiosity.<br /><br />This one begins with you &mdash; the things that intrigue you, the things you haven&rsquo;t quite found words for, and the parts of yourself you might be ready to understand a little better.<br /><br />You don&rsquo;t need to know exactly what you&rsquo;re looking for.<br />That&rsquo;s rather the point.</p>
-            <div className="mt-9"><CTA href="mailto:hello@filthyprincess.com?subject=Sexual%20Awakening%20%26%20Self-Discovery" secondary>Explore yourself with Cally</CTA></div>
+            <div className="mt-9"><CTA href="mailto:hello@filthyprincesss.com?subject=Sexual%20Awakening%20%26%20Self-Discovery" secondary>Explore yourself with Cally</CTA></div>
           </Reveal>
 
           <Reveal delay={150}>
             <p className="loud text-2xl tracking-[0.08em] text-(--fp-hot-pink) sm:text-3xl">I DO.</p>
             <h3 className="display mt-3 text-3xl leading-[0.95] sm:text-5xl">Just Plain Filthy</h3>
             <p className="mt-7 max-w-md text-lg leading-8 text-(--fp-dirty-white)/75 sm:text-xl sm:leading-9">You probably have a pretty good idea what you want.<br />This time, Cally is the centre of attention.<br /><br />Your plaything. Your temptation. Your very willing excuse to follow that curiosity a little further.<br /><br />But I&rsquo;m still going to wonder why.<br />Because sometimes the most interesting thing about wanting something is discovering what made you want it in the first place.</p>
-            <div className="mt-9"><CTA href="mailto:hello@filthyprincess.com?subject=Just%20Plain%20Filthy">Come play with Cally</CTA></div>
+            <div className="mt-9"><CTA href="mailto:hello@filthyprincesss.com?subject=Just%20Plain%20Filthy">Come play with Cally</CTA></div>
           </Reveal>
         </div>
 

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://filthyprincess.com"),
+  metadataBase: new URL("https://filthyprincesss.com"),
   title: {
     default: "Filthy Princess | You found something",
     template: "%s | Filthy Princess",

@@ -1,0 +1,131 @@
+.overture {
+  --ink: #060506;
+  --paper: #eee5dc;
+  --warm: #c5a495;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  isolation: isolate;
+}
+
+/* SiteFrame's overflow:hidden would capture sticky positioning. This applies
+   only to a frame containing this movement, including the existing experiment. */
+:global(.min-h-screen):has(.overture) { overflow: clip; }
+/* End home on its invitation without the shared footer's additional tagline. */
+:global(div):has(> .overture) > :global(footer) { display: none; }
+
+.overture figure, .overture p, .overture h1, .overture h2 { margin: 0; }
+.overture img { display: block; width: 100%; height: auto; }
+.statement {
+  font-size: clamp(2.35rem, 8.9vw, 6.8rem);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+.aside { color: var(--warm); font-size: clamp(1.5rem, 5.7vw, 3rem); font-style: italic; line-height: 1.25; }
+.discovery { position: relative; min-height: 220svh; }
+.discoveryCopy { position: relative; z-index: 1; pointer-events: none; }
+.firstBeat { min-height: 105svh; padding: 28svh 7vw 0; }
+.secondBeat { min-height: 115svh; padding: 40svh 7vw 20svh; }
+.secondBeat .aside { max-width: 29vw; font-size: clamp(1.2rem, 5vw, 1.8rem); }
+.logoTrack { position: absolute; inset: 0 0 17svh; padding-top: 46svh; pointer-events: none; }
+.travellingLogo { position: sticky; top: 46svh; width: 62vw; margin-left: auto; margin-right: 0; mix-blend-mode: screen; }
+
+.evidence { padding: 24svh 0 36svh; }
+.dress {
+  position: relative;
+  width: min(86vw, 680px);
+  margin-left: 3vw !important;
+  isolation: isolate;
+  mask-image: linear-gradient(90deg, transparent, black 11%, black 91%, transparent), linear-gradient(black 0 82%, transparent);
+  mask-composite: intersect;
+}
+.dress::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #060506c7, transparent 18%, transparent 72%, #060506a8), linear-gradient(180deg, #06050636, transparent 30%, #060506e8 100%);
+}
+.dress img { filter: saturate(.88) contrast(1.05); box-shadow: -20px 24px 50px #000, 28px 44px 100px #000d; }
+.strawberry { width: min(44vw, 300px); margin: 40svh 9vw 0 auto !important; transform: rotate(5deg); mask-image: radial-gradient(ellipse, black 48%, transparent 73%); }
+.kiss { width: min(48vw, 360px); margin: 33svh 0 0 12vw !important; transform: rotate(-12deg); mix-blend-mode: screen; opacity: .78; }
+
+.staircase { position: relative; background: #030303; }
+.staircaseView { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; overflow: hidden; }
+.overture .staircasePhoto { height: 115svh; width: 100%; object-fit: cover; object-position: center; transform: translateY(-15svh); }
+.staircaseShade { position: absolute; inset: 0; background: linear-gradient(180deg, #06050620, transparent 20%, transparent 55%, #060506cc); }
+.lookingSpace { height: 180svh; }
+.caught, .answer { position: relative; z-index: 1; display: flex; align-items: center; padding: 0 7vw; text-shadow: 0 3px 30px #000; }
+.caught { min-height: 65svh; }
+.answer { min-height: 70svh; justify-content: flex-end; padding-right: 10vw; }
+.answer .aside { color: var(--paper); }
+
+.release { position: relative; background: var(--ink); padding-top: 32svh; }
+.breathe { min-height: 62svh; display: grid; place-items: center; font-size: clamp(2.6rem, 9vw, 5rem); }
+.curious { min-height: 85svh; display: grid; place-items: center; }
+.curious .aside { font-size: clamp(1.4rem, 5vw, 2.2rem); color: #b5a9a2; }
+.revelation { padding: 18svh 0 0; }
+.portraitField { position: relative; padding: 8svh 0 22svh; }
+.portraitField::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 43%, #9f655525, #1a10101a 36%, transparent 68%); pointer-events: none; }
+.portraitFrame {
+  position: relative;
+  width: min(76vw, 540px);
+  margin-inline: auto !important;
+  padding: 11px;
+  border: 1px solid #c3947c52;
+  background: linear-gradient(135deg, #3e2926, #120e0f 16%, #090808 82%, #4a3029);
+  box-shadow: 0 0 0 3px #070606, 0 0 0 4px #b27c6424, 4px 7px 0 #160e0d, 9px 15px 0 #090707, 17px 31px 34px #000b, 0 58px 110px #000e;
+}
+.portraitFrame::before, .portraitFrame::after { content: ""; position: absolute; width: 24px; height: 24px; pointer-events: none; }
+.portraitFrame::before { top: -5px; left: -5px; border-top: 1px solid #d5a087b3; border-left: 1px solid #d5a08782; box-shadow: 6px 5px 12px #0008; }
+.portraitFrame::after { bottom: -5px; right: -5px; border-bottom: 1px solid #d5a08791; border-right: 1px solid #d5a08761; box-shadow: -6px -5px 12px #0008; }
+.portraitRebate { padding: 6px; background: linear-gradient(135deg, #020202, #191010 45%, #030303); box-shadow: inset 2px 2px 5px #000, inset -1px -1px 2px #b787701c, 0 0 0 1px #d2a0872b; }
+.portraitRebate img { position: relative; border: 1px solid #e0b19838; box-shadow: inset 0 0 0 1px #000; }
+.frameMark { position: absolute; bottom: -6px; left: calc(50% - 3px); width: 6px; height: 6px; background: #a77763; transform: rotate(45deg); box-shadow: 0 0 0 3px #090707, 0 4px 10px #000; }
+.resolution { text-align: center; padding: 10svh 6vw 30svh; }
+.resolution .statement { font-size: clamp(2.2rem, 8vw, 5rem); }
+.continuation { display: inline-block; margin-top: 14svh; padding: 14px 4px; color: var(--warm) !important; font-size: clamp(1.5rem, 5.7vw, 2.2rem); font-style: italic; text-decoration: underline; text-decoration-color: #c5a49555; text-underline-offset: 9px; text-decoration-thickness: 1px; transition: color 200ms, text-decoration-color 200ms; }
+.continuation:hover { color: var(--paper) !important; text-decoration-color: currentColor; }
+.continuation:focus-visible { outline: 1px solid var(--warm); outline-offset: 8px; }
+
+/* Native enhancement; ordinary spacing carries the score without support. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .staircase { view-timeline-name: --stairway; view-timeline-axis: block; }
+    .staircasePhoto { animation: stairway-gaze linear both; animation-timeline: --stairway; animation-range: contain 0% contain 55%; }
+    @keyframes stairway-gaze { from { transform: translateY(-15svh); } to { transform: translateY(0); } }
+  }
+}
+
+@media (min-width: 768px) {
+  .firstBeat { padding: 38svh 0 0 8vw; }
+  .firstBeat .statement { font-size: clamp(3rem, 5.9vw, 6.8rem); max-width: 48vw; }
+  .secondBeat { padding: 40svh 0 20svh 12vw; }
+  .secondBeat .aside { max-width: 38vw; font-size: clamp(1.5rem, 3.3vw, 3rem); }
+  .logoTrack { padding-top: 29svh; }
+  .travellingLogo { top: 29svh; width: 42vw; max-width: 740px; margin-right: 5vw; }
+  .dress { width: min(46vw, 680px); margin-left: 14vw !important; }
+  .strawberry { width: min(20vw, 300px); margin-right: 20vw !important; margin-top: 28svh !important; }
+  .kiss { width: min(24vw, 360px); margin-left: 25vw !important; margin-top: 38svh !important; }
+  .overture .staircasePhoto { width: 100%; object-fit: contain; }
+  .staircaseView { background: radial-gradient(ellipse at center, #241a12, #030303 75%); }
+  .caught { padding-left: 12vw; }
+  .answer { padding-right: 15vw; }
+  .portraitFrame { padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* One stationary logo between the two thoughts; no travelling or image pan. */
+  .discovery { min-height: auto; }
+  .firstBeat { min-height: 75svh; }
+  .secondBeat { min-height: 85svh; padding-top: 40svh; }
+  .logoTrack { inset: 52svh 0 auto; padding: 0; }
+  .travellingLogo { position: static; }
+  .staircaseView { position: relative; height: auto; margin-bottom: 0; }
+  .overture .staircasePhoto { height: auto; max-height: 140svh; object-fit: contain; transform: none; }
+  .lookingSpace { height: 30svh; }
+  .continuation { transition: none; }
+}

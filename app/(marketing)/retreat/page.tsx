@@ -13,7 +13,7 @@ export default async function RetreatPage() {
     <main className="bg-(--fp-black) text-(--fp-dirty-white)">
       <section className="relative overflow-hidden bg-(--fp-black)">
         <div className="relative h-[78svh] w-full sm:h-screen">
-          <Image src="/moonPrincessWide.png" alt="A princess silhouette beneath an enormous moon" fill sizes="100vw" priority className="object-contain object-left sm:object-cover sm:object-left" />
+          <Image src="/10moonPrincessWide.png" alt="A princess silhouette beneath an enormous moon" fill sizes="100vw" priority className="object-contain object-left sm:object-cover sm:object-left" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(270deg,rgba(12,11,12,.9)_0%,rgba(12,11,12,.4)_45%,transparent_75%)]" />
         </div>
         <div className="absolute inset-0 z-10 mx-auto flex max-w-7xl flex-col items-end justify-end px-5 pb-14 text-right sm:justify-center sm:px-8 sm:pb-0">
@@ -64,19 +64,6 @@ export default async function RetreatPage() {
 
       <section className="relative overflow-hidden border-y border-white/10 bg-(--fp-charcoal) px-5 py-24 text-(--fp-dirty-white) sm:px-8 sm:py-36">
         <RetreatInterest products={products.data} />
-      </section>
-
-      <section className="relative overflow-hidden bg-(--fp-black) px-5 py-28 sm:px-8 sm:py-44">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <p className="display text-3xl leading-tight text-(--fp-dirty-white)/70 sm:text-5xl">So. How much?</p>
-            <h2 className="display mt-6 text-6xl leading-[0.92] sm:text-9xl">YOU CAN&rsquo;T<br />BUY THIS.</h2>
-            <p className="display mt-6 text-2xl italic text-(--fp-blush) sm:text-4xl">Not for any price.</p>
-          </Reveal>
-          <Reveal delay={150} className="mt-14">
-            <p className="max-w-lg text-lg leading-8 text-(--fp-dirty-white)/75 sm:text-xl sm:leading-9">You don&rsquo;t book a Filthy Princess Retreat.<br />You get invited to one.</p>
-          </Reveal>
-        </div>
       </section>
 
       <section className="relative overflow-hidden bg-(--fp-pink) px-5 py-24 text-(--fp-black) sm:px-8 sm:py-36">
