@@ -1,5 +1,0 @@
-.timeline > main:nth-child(1) div:has(> a[href="/cally"]),
-.timeline > main:nth-child(2) div:has(> a[href="/experience"]),
-.timeline > main:nth-child(3) div:has(> a[href="/retreat"]) {
-  display: none;
-}

@@ -1,0 +1,73 @@
+.experience { background: #000; color: #f1e8dc; font-family: var(--font-display); overflow: clip; }
+:global(.min-h-screen):has(> .experience) { overflow: clip; background: #000; }
+:global(div):has(> .experience) > :global(footer) { display: none; }
+.experience h1, .experience h2, .experience p { margin: 0; }
+.scene, .viewport { position: relative; }
+.world { position: absolute; inset: 0 0 auto; height: 100svh; overflow: hidden; perspective: 900px; perspective-origin: 65% 43%; pointer-events: none; }
+.plane, .warmth { position: absolute; inset: 0; }
+.plane img, .staticReturn img { object-fit: cover; }
+.hero img { object-position: 79% center; }
+.returning img, .staticReturn img { object-position: 28% center; }
+.returning { opacity: 0; visibility: hidden; }
+.hero::after, .returning::after, .staticReturn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #000c, transparent 55%), linear-gradient(90deg, #0004, transparent 70%); }
+.satin, .companion, .dust, .warmth { opacity: 0; }
+/* The material planes cover the stage throughout the Pull. Darkness opens
+   inside the folds, rather than tracing the perimeter of a shrinking bitmap. */
+.satin { mask-image: linear-gradient(110deg, #000, #000e 26%, #0002 58%, #000a 82%, #000); }
+.companion { mask-image: linear-gradient(90deg, #0008, #0002 28%, #000 65%, #000b); }
+.dust { mask-image: linear-gradient(180deg, transparent, #000 25%, #000 70%, transparent); }
+.warmth { background: radial-gradient(ellipse at 64% 66%, #6a3528, #25110e 35%, transparent 72%); }
+.attention, .returnMoment { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 0 7vw 12svh; }
+.attention h1, .returnMoment h2 { position: relative; max-width: 12ch; font-weight: 400; font-size: clamp(2.8rem, 11vw, 7rem); line-height: .98; letter-spacing: -.035em; text-wrap: balance; }
+.reassurance { min-height: 130svh; padding: 35svh 7vw; display: grid; place-items: center; background: #000; }
+.reassurance p { font-size: clamp(1.35rem, 4.8vw, 2rem); font-style: italic; }
+.staticReturn { position: absolute; inset: 0; background: #25110e url('/assets/wavesOfSatin.png') center / cover; }
+.staticReturn img { opacity: .85; }
+.returnMoment h2 { max-width: 16ch; font-size: clamp(2.5rem, 9.5vw, 6rem); }
+.tease p { min-height: 65svh; display: grid; place-items: center; padding: 18svh 9vw; text-align: center; font-size: clamp(1.65rem, 6vw, 2.75rem); font-style: italic; line-height: 1.35; text-wrap: balance; }
+.tease p:first-child { min-height: 95svh; }
+.tease .thinking { margin-top: 110svh; min-height: 55svh; padding: 15svh 9vw; }
+.tease .correction { min-height: 50svh; padding: 15svh 9vw; }
+.tease .notYet { min-height: 100svh; padding: 30svh 9vw; }
+.tease .realPlace { margin-top: 110svh; min-height: 65svh; }
+.handoff { min-height: 70svh; display: grid; place-items: center; padding: 15svh 7vw 25svh; }
+.handoff a { font-size: clamp(1.6rem, 5vw, 2.3rem); font-style: italic; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+.handoff a:focus-visible { outline: 1px solid #efd2bd; outline-offset: 12px; }
+
+/* Small viewport units keep browser chrome from shifting timeline thresholds. */
+@media (prefers-reduced-motion: no-preference) {
+  .scene[data-enhanced] { height: 3386.5svh; }
+  .scene[data-enhanced] .tease { position: absolute; inset: 0; pointer-events: none; }
+  .scene[data-enhanced] .tease p, .scene[data-enhanced] .handoff { position: absolute; inset: 0; min-height: 0; margin: 0; padding: 10svh 9vw; opacity: 0; visibility: hidden; }
+  .scene[data-enhanced] .tease p:nth-child(1) { opacity: var(--line-1, 0); visibility: var(--line-1-visibility, hidden); }
+  .scene[data-enhanced] .tease p:nth-child(2) { opacity: var(--line-2, 0); visibility: var(--line-2-visibility, hidden); }
+  .scene[data-enhanced] .tease p:nth-child(3) { opacity: var(--line-3, 0); visibility: var(--line-3-visibility, hidden); transform: scale(var(--close-scale, 1)); }
+  .scene[data-enhanced] .tease p:nth-child(4) { opacity: var(--line-4, 0); visibility: var(--line-4-visibility, hidden); }
+  .scene[data-enhanced] .tease p:nth-child(5) { opacity: var(--line-5, 0); visibility: var(--line-5-visibility, hidden); }
+  .scene[data-enhanced] .tease p:nth-child(6) { opacity: var(--line-6, 0); visibility: var(--line-6-visibility, hidden); font-style: normal; }
+  .scene[data-enhanced] .tease p:nth-child(7) { opacity: var(--line-7, 0); visibility: var(--line-7-visibility, hidden); }
+  .scene[data-enhanced] .tease p:nth-child(8) { opacity: var(--line-8, 0); visibility: var(--line-8-visibility, hidden); font-style: normal; }
+  .scene[data-enhanced] .handoff { opacity: var(--handoff, 0); visibility: var(--handoff-visibility, hidden); }
+  .scene[data-enhanced] .handoff a { pointer-events: auto; }
+  .scene[data-enhanced] .viewport { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  .scene[data-enhanced] .world { visibility: var(--world, visible); opacity: var(--world-opacity, 1); }
+  .scene[data-enhanced] .hero, .scene[data-enhanced] .returning { mask-image: linear-gradient(90deg, transparent, #000 var(--edge, 0%), #000 calc(100% - var(--edge, 0%)), transparent), linear-gradient(0deg, transparent, #000 var(--edge, 0%), #000 calc(100% - var(--edge, 0%)), transparent); mask-composite: intersect; }
+  .scene[data-enhanced] .hero { opacity: var(--hero-opacity, 1); transform: var(--hero-transform); }
+  .scene[data-enhanced] .returning { opacity: var(--return-opacity, 0); visibility: var(--return-visibility, hidden); transform: var(--return-transform); }
+  .scene[data-enhanced] .satin { opacity: var(--satin-opacity, 0); transform: var(--satin-transform); }
+  .scene[data-enhanced] .companion { opacity: var(--companion-opacity, 0); transform: var(--companion-transform); }
+  .scene[data-enhanced] .dust { opacity: var(--dust-opacity, 0); transform: var(--dust-transform); }
+  .scene[data-enhanced] .warmth { opacity: var(--warmth, 0); }
+  .scene[data-enhanced] .attention, .scene[data-enhanced] .reassurance, .scene[data-enhanced] .returnMoment { position: absolute; inset: 0; min-height: 0; background: transparent; pointer-events: none; }
+  .scene[data-enhanced] .attention { opacity: var(--attention, 1); }
+  .scene[data-enhanced] .attention h1 { letter-spacing: calc(-.035em + var(--tracking, 0em)); }
+  .scene[data-enhanced] .reassurance { opacity: var(--here, 0); padding: 7vw; }
+  .scene[data-enhanced] .returnMoment { opacity: var(--question, 0); }
+  .scene[data-enhanced] .staticReturn { display: none; }
+}
+@media (min-width: 700px) {
+  .hero img { object-position: 70% center; }
+  .returning img, .staticReturn img { object-position: center; }
+  .attention, .returnMoment { align-items: center; padding-bottom: 0; }
+  .hero::after, .returning::after, .staticReturn::after { background: linear-gradient(90deg, #000b, #0003 48%, transparent 76%); }
+}
