@@ -1,0 +1,125 @@
+.composition { background: #000; color: #f1e8dc; overflow: clip; }
+.composition h2 { font-family: var(--font-display); font-size: clamp(2.7rem, 10vw, 6.7rem); font-weight: 400; line-height: .98; letter-spacing: -.035em; text-wrap: balance; }
+.composition > section { position: relative; }
+.care { padding: 22svh 7vw 18svh; }
+.careCopy { max-width: 42rem; }
+.careCopy p { margin-top: 2rem; max-width: 26ch; color: #c9b4a6; font-size: 1.15rem; line-height: 1.7; }
+.careImage { height: 65svh; margin-top: 10svh; }
+.careDetail { width: 78%; height: 38svh; margin: 7svh 0 0 auto; }
+.food { padding: 10svh 0 20svh; }
+.food h2 { padding: 0 7vw; margin-bottom: 7svh; }
+.foodImage { height: 72svh; }
+.foodDetail { width: 78%; height: 42svh; margin: -5svh 7vw 0 auto; position: relative; }
+.scribble { position: relative; margin: -1rem 7vw 0; font-family: "Bradley Hand", "Segoe Print", cursive; font-size: clamp(1.7rem, 6vw, 3rem); line-height: 1.4; color: #d6a28d; transform: rotate(-5deg); }
+.play { padding: 8svh 7vw 22svh; }
+.play h2 { margin-bottom: 8svh; }
+.playWide { height: 65svh; margin-right: -7vw; }
+.playDetail { position: relative; width: 82%; height: 40svh; margin-top: -4svh; margin-left: -7vw; transform: rotate(-2deg); }
+.note { position: relative; width: 28vw; max-width: 160px; aspect-ratio: 1; margin: -5svh 0 0 auto; transform: rotate(6deg); }
+.note img { object-fit: cover; }
+.attention { padding-bottom: 0; }
+.attentionCopy { padding: 7svh 7vw; }
+.attentionCopy h2 { max-width: 14ch; }
+.attentionCopy p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 5vw, 2.6rem); color: #d8b7a6; margin-top: 2rem; }
+.stillness { padding: 22svh 7vw 28svh; }
+.stillness h2 { max-width: 14ch; }
+.stillness > p { margin-top: 12svh; color: #c4b8ae; font-family: var(--font-display); font-size: 1.4rem; line-height: 1.8; }
+.surprise { min-height: 100svh; display: grid; align-items: center; padding: 22svh 9vw 30svh; }
+.surprise h2 { font-size: clamp(2.5rem, 8vw, 5rem); }
+.decision { padding: 8svh 6vw 0; }
+.decisionTitle { max-width: 13ch; margin: 0 auto 10svh; text-align: center; }
+.selection > div:first-child:not(.hesitation) { padding: clamp(1.2rem, 4vw, 3.5rem); border: 1px solid #b889704d; background: #15110f; border-radius: 3px; }
+.selection button[aria-pressed="true"] { border-color: #d6a28d; background-color: #d6a28d12; }
+.selection input:focus, .selection textarea:focus { border-color: #d6a28d; }
+.selection button:focus-visible, .selection a:focus-visible { outline: 2px solid #d6a28d; outline-offset: 5px; }
+.hesitation { padding-top: 55svh; }
+.hesitation > p { display: grid; place-items: center; min-height: 65svh; text-align: center; font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 5vw, 2.5rem); }
+.hesitation > p + p { margin-top: 45svh; }
+.doorReveal { margin: 12svh -6vw 0; }
+.door { display: block; position: relative; height: 95svh; max-width: 900px; margin: auto; mask-image: linear-gradient(0deg, transparent, #000 20%, #000 75%, transparent); }
+.door img { object-fit: cover; object-position: center; }
+@media (min-width: 800px) {
+  .care { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5vw; align-items: center; }
+  .careImage { height: 80svh; margin: 0; }
+  .careDetail { grid-column: 1; width: 75%; margin: -12svh 0 0; }
+  .food { padding-left: 12vw; padding-right: 12vw; }
+  .food h2 { padding: 0; }
+  .foodImage { width: 85%; height: 80svh; }
+  .foodDetail { width: 40%; height: 50svh; margin: -24svh 0 0 auto; }
+  .scribble { margin-left: 6vw; }
+  .play { padding-left: 12vw; padding-right: 12vw; }
+  .playWide { width: 78%; margin-left: auto; }
+  .playDetail { width: 40%; margin-top: -22svh; margin-left: 0; }
+  .attentionCopy { max-width: 70rem; margin: auto; }
+  .stillness { padding-left: 14vw; padding-right: 14vw; }
+  .stillness > p { margin-top: 16svh; }
+  .surprise { padding-left: 18vw; }
+}
+/* Only this route releases the shared overflow container for its two sticky beats. */
+:global(.min-h-screen):has(> .retreat) { overflow: clip; }
+.careImage, .careDetail, .foodImage, .foodDetail, .playWide, .playDetail, .crown { position: relative; }
+.careImage, .foodImage, .playWide { mask-image: linear-gradient(0deg, transparent, #000 13%, #000 87%, transparent); }
+.careDetail, .foodDetail, .playDetail, .crown, .note { mask-image: linear-gradient(0deg, transparent, #000 12%, #000 88%, transparent), linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-composite: intersect; }
+.careImage img { object-fit: cover; object-position: 52% center; }
+.careImage { height: 78svh; margin-left: -7vw; margin-right: -7vw; }
+.careDetail { height: 42svh; margin-top: 14svh; }
+.careDetail img { object-fit: cover; object-position: 72% center; }
+.foodImage { height: 88svh; }
+.foodImage img { object-fit: cover; object-position: 34% center; }
+.foodDetail { width: 72%; height: 38svh; margin-top: 8svh; }
+.foodDetail img { object-fit: cover; object-position: 58% center; }
+.scribble { z-index: 1; margin-top: -2svh; }
+.playWide { height: 76svh; margin-left: -7vw; }
+.playWide img { object-fit: cover; object-position: 57% center; }
+.playDetail { width: 78%; height: 48svh; margin-top: 16svh; transform: rotate(-2deg); }
+.playDetail img { object-fit: cover; object-position: 82% center; }
+.crown { width: 42vw; max-width: 230px; aspect-ratio: 1.5; margin: 18svh 0 0 auto; }
+.crown img { object-fit: contain; object-position: center; }
+.note { margin: 22svh auto 0 9vw; }
+.attentionPhoto { position: absolute; inset: 0; mask-image: linear-gradient(0deg, transparent, #000 12%, #000 94%, transparent); }
+.attentionPhoto img { object-fit: cover; object-position: 48% center; }
+.dropViewport { position: relative; height: 95svh; overflow: hidden; background: #000; }
+.rain { position: absolute; inset: -6% 0; opacity: 0; pointer-events: none; mask-image: linear-gradient(0deg, transparent, #000 20%, #000 80%, transparent); }
+.rain img { object-fit: cover; object-position: center; }
+.stillness { padding-top: 45svh; }
+.stillness > p { margin-top: 22svh; }
+.approachViewport { position: relative; min-height: 90svh; display: grid; place-items: center; }
+.decisionTitle { position: relative; z-index: 1; margin: 0; }
+.thoughts { display: none; position: absolute; inset: 0; pointer-events: none; font-family: "Bradley Hand", "Segoe Print", cursive; color: #c69781; }
+.thoughts span { position: absolute; opacity: 0; font-size: clamp(1.4rem, 6vw, 3rem); transform: rotate(-7deg); }
+.thoughts span:nth-child(1) { left: 5%; top: 18%; }
+.thoughts span:nth-child(2) { right: 6%; top: 76%; transform: rotate(5deg); }
+.thoughts span:nth-child(3) { left: 12%; top: 72%; font-size: clamp(2rem, 10vw, 5rem); }
+.thoughts span:nth-child(4) { right: 5%; top: 20%; }
+.thoughts span:nth-child(5) { left: 8%; top: 78%; font-size: 1.25rem; }
+.thoughts span:nth-child(6) { right: 8%; top: 15%; transform: rotate(7deg); }
+.thoughts span:nth-child(7) { right: 5%; top: 78%; font-size: clamp(2rem, 9vw, 4rem); }
+.thoughts span:nth-child(8) { left: 5%; top: 17%; font-size: clamp(1.2rem, 5vw, 2rem); }
+.door { mask-image: linear-gradient(0deg, transparent, #000 20%, #000 75%, transparent), linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent); mask-composite: intersect; }
+.door img { object-position: 50% center; }
+@media (prefers-reduced-motion: no-preference) {
+  .composition[data-motion] .attentionDrop { height: 340svh; }
+  .composition[data-motion] .dropViewport { position: sticky; top: 0; height: 100svh; }
+  .composition[data-motion] .attentionPhoto { opacity: var(--portrait, 1); }
+  .composition[data-motion] .rain { opacity: var(--rain, 0); transform: translateY(var(--rain-y, 0%)); }
+  .composition[data-motion] .approach { height: 310svh; }
+  .composition[data-motion] .approachViewport { position: sticky; top: 0; height: 100svh; }
+  .composition[data-motion] .thoughts { display: block; }
+  .composition[data-motion] [data-depth="drift"], .composition[data-motion] [data-depth="door"] { opacity: var(--depth-opacity, 1); transform: translateY(var(--depth-y, 0%)) scale(var(--depth-scale, 1)); }
+}
+@media (min-width: 800px) {
+  .careImage { height: 85svh; margin: 0 -7vw 0 0; }
+  .careDetail { margin-top: 4svh; width: 85%; }
+  .careImage img { object-position: center; }
+  .careDetail img { object-position: 62% center; }
+  .foodImage { width: 100%; height: 88svh; }
+  .foodImage img { object-position: center; }
+  .foodDetail { margin-top: 4svh; height: 45svh; width: 40%; }
+  .playWide { width: 90%; margin-left: auto; }
+  .playWide img { object-position: center; }
+  .playDetail { margin: 12svh 0 0; width: 42%; height: 60svh; }
+  .crown { margin-right: 12%; }
+  .note { margin-left: 28%; }
+  .attentionPhoto img { object-position: center; }
+  .door { height: 110svh; }
+}

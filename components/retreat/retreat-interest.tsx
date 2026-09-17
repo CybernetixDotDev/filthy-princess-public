@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { useActionState, useEffect, useMemo, useState, useTransition } from "react";
+import { useActionState, useEffect, useMemo, useState, useTransition, type ReactNode } from "react";
 import { getRetreatPrice, submitRetreatInterest, type PublicRetreatPrice } from "@/app/actions/retreat";
 import type { PublicRetreatFormat, PublicRetreatProduct } from "@/lib/supabase/types";
 
@@ -31,7 +30,7 @@ function formatMoney(price: PublicRetreatPrice) {
   }
 }
 
-export function RetreatInterest({ products }: { products: PublicRetreatProduct[] }) {
+export function RetreatInterest({ products, continuation }: { products: PublicRetreatProduct[]; continuation?: ReactNode }) {
   const [productId, setProductId] = useState(products[0]?.id ?? "");
   const product = products.find((item) => item.id === productId) ?? products[0];
   const formats = useMemo(() => product?.allowed_formats.filter(isPrivateFormat) ?? [], [product]);
@@ -59,7 +58,7 @@ export function RetreatInterest({ products }: { products: PublicRetreatProduct[]
   }, [format, guestCount, formats, product]);
 
   if (!products.length) {
-    return <p className="mx-auto max-w-xl text-center text-lg text-white/65">Retreat details are temporarily unavailable. Please come back soon.</p>;
+    return <><p className="mx-auto max-w-xl text-center text-lg text-white/65">Retreat details are temporarily unavailable. Please come back soon.</p>{continuation}</>;
   }
 
   return (
@@ -127,13 +126,10 @@ export function RetreatInterest({ products }: { products: PublicRetreatProduct[]
             <p className="eyebrow text-(--fp-hot-pink)">Enquiry received</p>
             <h2 id="retreat-success-title" className="display mt-4 text-5xl">Cally&rsquo;s got it.</h2>
             <p className="mt-6 leading-7 text-white/70">Your interest has been received. I&rsquo;ll be in touch about availability and the details.</p>
-            <p className="display mt-8 text-2xl text-(--fp-blush)">But before you disappear…</p>
-            <p className="mt-4 leading-7 text-white/70"><strong className="text-white">Inner Sanctum members are sometimes gifted their entire chosen retreat experience.</strong></p>
-            <p className="mt-3 leading-7 text-white/55">You don&rsquo;t need to be a member to come to the retreat. But there are advantages to being one.</p>
-            <Link href="/inner-sanctum" className="mt-8 inline-flex border-b border-(--fp-hot-pink) pb-2 text-sm uppercase tracking-[0.14em]">Discover the Inner Sanctum →</Link>
           </section>
         </div>
       )}
+      {!enquiryState.success && continuation}
     </>
   );
 }
