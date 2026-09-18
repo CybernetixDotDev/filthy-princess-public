@@ -10,7 +10,6 @@ const photographs = [
   { src: "/hotCally2.jpeg", alt: "Cally seated, looking directly at the camera." },
   { src: "/hotCally3.jpeg", alt: "Another seated portrait of Cally in black lace." },
   { src: "/hotCally4.jpeg", alt: "Cally in a seated side-profile portrait." },
-  { src: "/hotCally5.jpeg", alt: "Cally in the final seated portrait." },
 ];
 
 export default function CallyPage() {
@@ -77,7 +76,14 @@ export default function CallyPage() {
           </div>
         </ScrollScene>
         <div className={styles.lastSilence} aria-hidden="true" />
-        <Link className={styles.invitation} href="/experience">come with me.</Link>
+        <Link className={styles.invitation} href="/experience">
+          <svg className={styles.invitationInk} viewBox="0 0 300 110" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path className={styles.invitationStroke} pathLength="100" d="M 25,40 C 9,49 12,72 37,83 C 71,98 147,88 186,92 C 219,95 265,84 277,66 C 285,54 280,43 268,46" />
+            <path className={styles.invitationStroke} pathLength="100" d="M 64,24 C 96,12 143,21 178,18 C 209,15 238,15 254,28 C 262,34 267,31 270,25" />
+            <path className={styles.invitationFlower} d="M 270,25 C 257,23 254,12 261,12 C 267,12 272,20 270,25 C 266,14 272,4 278,9 C 284,14 275,23 270,25 C 280,15 291,20 287,26 C 283,32 274,29 270,25" />
+          </svg>
+          <span>come with me.</span>
+        </Link>
       </section>
     </main>
   );

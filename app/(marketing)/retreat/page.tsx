@@ -39,10 +39,11 @@ export default async function RetreatPage() {
         </section>
         <section className={styles.play}>
           <h2>WE&apos;LL PLAY.</h2>
-          <div className={styles.playWide}><Image src="/BeautifulOne2.jpeg" alt="Black silk, petals and abandoned shoes around a chair" fill sizes="(max-width: 800px) 100vw, 80vw" /></div>
-          <div className={styles.playDetail} data-depth="drift"><Image src="/ridiculousOne.png" alt="Cally disappearing through a doorway in a swirl of black silk" fill sizes="(max-width: 800px) 78vw, 42vw" /></div>
-          <div className={styles.crown}><Image src="/StrawberryCrown.png" alt="A strawberry, a playing card and a tiny crown" fill sizes="(max-width: 800px) 42vw, 230px" /></div>
-          <div className={styles.note}><Image src="/touchMe.png" alt="A note that says touch me" fill sizes="(max-width: 700px) 28vw, 160px" /></div>
+          <div className={styles.playWide}><Image src="/BeautifulOne2.jpeg" alt="Black silk, petals and abandoned shoes around a chair" fill sizes="(max-width: 800px) 100vw, 80vw" /><span className={`${styles.annotation} ${styles.dressNote}`}>Dress Up<span className={styles.underline} aria-hidden="true" /></span></div>
+          <div className={styles.playDetail} data-depth="drift"><Image src="/ridiculousOne.png" alt="Cally disappearing through a doorway in a swirl of black silk" fill sizes="(max-width: 800px) 78vw, 42vw" /><span className={`${styles.annotation} ${styles.giggleNote}`}>Dance <span aria-hidden="true">♡</span></span></div>
+          <div className={styles.blackTrace} data-depth="trace"><span>Giggle</span></div>
+          <div className={styles.crown} data-depth="drift"><Image src="/StrawberryCrown.png" alt="A strawberry, a playing card and a tiny crown" fill sizes="(max-width: 800px) 86vw, 64vw" /><span className={`${styles.annotation} ${styles.decadenceNote}`}>Decadence<span className={styles.underline} aria-hidden="true" /></span></div>
+          <div className={`${styles.blackTrace} ${styles.afterthought}`} data-depth="trace"><span>Again?</span></div>
         </section>
         <section className={styles.attention}>
           <div className={styles.attentionCopy}><h2>YOU&apos;LL HAVE MY ATTENTION.</h2><p>You don&apos;t have to imagine it.</p></div>
@@ -50,14 +51,10 @@ export default async function RetreatPage() {
             <div className={styles.dropViewport}>
               <div className={styles.attentionPhoto}><Image src="/fullAttentionCally4K.jpeg" alt="Cally seated in a pink chair in the rain, looking directly towards you" fill sizes="(max-width: 800px) 150vw, 100vw" /></div>
               <div className={styles.rain} aria-hidden="true"><Image src="/RainOverlayZoomedout.png" alt="" fill unoptimized /></div>
+              <div className={styles.showerNotes}><span>Filthy Showers<span className={styles.underline} aria-hidden="true" /></span><span>Thirsty <span aria-hidden="true">♡</span></span></div>
             </div>
           </div>
         </section>
-        <section className={styles.stillness}>
-          <h2>WE DON&apos;T HAVE TO DO ANYTHING.</h2>
-          <p>Coffee.<br />Rain.<br />Staying in bed.<br />Talking for hours.</p>
-        </section>
-        <section className={styles.surprise}><h2>I DO LIKE<br />SURPRISES.</h2></section>
         <section className={styles.decision}>
           <div className={styles.approach} data-depth="thoughts">
             <div className={styles.approachViewport}>
@@ -71,7 +68,7 @@ export default async function RetreatPage() {
             <RetreatInterest products={products.data} continuation={
               <div key="retreat-continuation" className={styles.hesitation}>
                 <p>not ready?</p>
-                <p>you don&apos;t have to leave.</p>
+                <p data-depth="drift">you don&apos;t have to leave.</p>
                 <div className={styles.doorReveal} data-depth="door">
                   <Link href="/inner-sanctum" className={styles.door} aria-label="Enter the Inner Sanctum">
                     <Image src="/StoneDoorway.png" alt="A flower-covered stone doorway emerging from darkness" fill sizes="(max-width: 700px) 100vw, 900px" />

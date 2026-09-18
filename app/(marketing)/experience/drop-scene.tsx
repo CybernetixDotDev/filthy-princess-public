@@ -8,26 +8,26 @@ const ramp = (p: number, start: number, end: number) => {
   return t * t * (3 - 2 * t);
 };
 
-// Active ranges retain the original 3,400svh-per-progress-unit rate.
-// Only static holds are compressed; positions below are cumulative svh / travel.
+// Satin flight ends at reassurance; the next image returns directly from black.
+// Positions are cumulative svh / travel, mapped onto the existing visual states.
 const scrollRanges = [
   [0, 0],
-  [84 / 2417.1, .13],          // Opening hold.
-  [1172 / 2417.1, .45],        // Pull: 1,088svh, then abrupt Break.
-  [1245.5 / 2417.1, .555],     // Pure Void: 73.5svh.
-  [1313.5 / 2417.1, .575],     // Reassurance fade in: 68svh.
-  [1398 / 2417.1, .64],        // Reassurance hold: 84.5svh.
-  [1466 / 2417.1, .66],        // Reassurance fade out: 68svh.
-  [2248 / 2417.1, .89],        // Reconstruction including Cally: 782svh.
-  [2321.5 / 2417.1, .965],     // Resolved Cally hold: 73.5svh.
-  [2379.3 / 2417.1, .982],     // Question fade in: 57.8svh.
-  [1, 1],                     // Question hold: 37.8svh.
+  [84 / 1405.1, 0.13], // Opening hold.
+  [984 / 1405.1, 0.45], // Satin flight: 900svh, then Break.
+  [1057.5 / 1405.1, 0.555], // Pure Void: 73.5svh.
+  [1125.5 / 1405.1, 0.575], // Reassurance fade in: 68svh.
+  [1160.5 / 1405.1, 0.64], // Small reassurance breath: 35svh.
+  [1184.5 / 1405.1, 0.66], // Reassurance release: 24svh.
+  [1264.5 / 1405.1, 0.89], // Image-only return: 80svh.
+  [1309.5 / 1405.1, 0.965], // Resolved image hold: 45svh.
+  [1367.3 / 1405.1, 0.982], // Question fade in: 57.8svh.
+  [1, 1], // Question hold: 37.8svh.
 ] as const;
 
 export function dropState(progress: number): Record<string, string> {
-  // Append the closing movement in physical svh; the original scene keeps its rate.
-  const distance = Math.max(0, Math.min(1, progress)) * 3286.5;
-  const scroll = Math.min(1, distance / 2417.1);
+  // Closing windows retain their physical duration after the earlier handoff.
+  const distance = Math.max(0, Math.min(1, progress)) * 2274.5;
+  const scroll = Math.min(1, distance / 1405.1);
   const index = scrollRanges.findIndex(([end]) => end >= scroll);
   const [start, from] = scrollRanges[Math.max(0, index - 1)];
   const [end, to] = scrollRanges[index];
@@ -37,9 +37,8 @@ export function dropState(progress: number): Record<string, string> {
   const deep = ramp(p, .34, .45);
   const restoring = p >= .66;
   const broken = p >= .45 && !restoring;
-  const body = ramp(p, .735, .825);
-  const cally = ramp(p, .825, .89);
-  const closing = distance - 2321.5;
+  const cally = ramp(p, .66, .89);
+  const closing = distance - 1309.5;
   const windows = [
     [130, 155, 195.25, 225.25], // yes: 15% longer hold
     [235, 255, 289.5, 309.5], // a place: 15% longer hold
@@ -63,25 +62,18 @@ export function dropState(progress: number): Record<string, string> {
     "--handoff": String(ramp(closing, 910, 935)),
     "--handoff-visibility": closing > 910 ? "visible" : "hidden",
     "--world": broken ? "hidden" : "visible",
-    "--edge": `${restoring ? (1 - cally) * 16 : pull * 18}%`,
+    "--edge": `${restoring ? 0 : pull * 18}%`,
     "--hero-opacity": String(restoring ? 0 : 1 - .66 * pull),
     "--hero-transform": `translate3d(${deep * 7}%, ${-pull * 9}%, ${-pull * 1150}px) rotateY(${deep * -12}deg) scaleX(${1 - .35 * deep}) scaleY(${1 + .28 * deep})`,
-    "--return-opacity": String(p > .825 ? cally : 0),
-    "--return-visibility": p > .825 && cally > 0 ? "visible" : "hidden",
+    "--return-opacity": String(p > .66 ? cally : 0),
+    "--return-visibility": p > .66 && cally > 0 ? "visible" : "hidden",
     "--return-transform": `translate3d(0, ${(1 - cally) * 3}%, 0) scale(${1.035 - .035 * cally})`,
-    "--satin-opacity": String(restoring ? body * (1 - .82 * cally) : .7 * ramp(p, .145, .255)),
-    "--satin-transform": restoring
-      ? `translate3d(0, ${(1 - body) * 7}%, 0) scale(${1.08 - body * .08})`
-      : `translate3d(${-pull * 4}%, ${pull * 3}%, 0) scaleX(${1.12 - deep * .025}) scaleY(${1.12 + deep * .65})`,
-    "--companion-opacity": String(restoring ? .55 * ramp(p, .72, .81) * (1 - .7 * cally) : .6 * ramp(p, .205, .32)),
-    "--companion-transform": restoring
-      ? `translate3d(0, ${(1 - body) * -3}%, 0) scale(1.04)`
-      : `translate3d(${pull * 5}%, ${pull * -3}%, 0) scaleX(${1.15 - deep * .035}) scaleY(${1.12 + deep * 1.2})`,
-    "--dust-opacity": String(restoring ? .32 * ramp(p, .695, .755) : .08 + .3 * ramp(p, .145, .31)),
-    "--dust-transform": restoring
-      ? `translate3d(0, ${(1 - body) * 2}%, 0) scale(1.02)`
-      : `translate3d(${-pull * 8}%, ${-pull * 21}%, ${-pull * 230}px) scaleX(${1 - deep * .3}) scaleY(${1 + deep * .9})`,
-    "--warmth": String(restoring ? .5 * ramp(p, .66, .73) * (1 - .6 * cally) : 0),
+    "--satin-opacity": String(p >= .45 ? 0 : .7 * ramp(p, .145, .255)),
+    "--satin-transform": `translate3d(${-pull * 4}%, ${pull * 3}%, 0) scaleX(${1.12 - deep * .025}) scaleY(${1.12 + deep * .65})`,
+    "--companion-opacity": String(p >= .45 ? 0 : .6 * ramp(p, .205, .32)),
+    "--companion-transform": `translate3d(${pull * 5}%, ${pull * -3}%, 0) scaleX(${1.15 - deep * .035}) scaleY(${1.12 + deep * 1.2})`,
+    "--dust-opacity": String(p >= .45 ? 0 : .08 + .3 * ramp(p, .145, .31)),
+    "--dust-transform": `translate3d(${-pull * 8}%, ${-pull * 21}%, ${-pull * 230}px) scaleX(${1 - deep * .3}) scaleY(${1 + deep * .9})`,
     "--attention": String(1 - ramp(p, .205, .34)),
     "--tracking": `${pull * .055}em`,
     "--here": String(ramp(p, .555, .575) * (1 - ramp(p, .64, .66))),

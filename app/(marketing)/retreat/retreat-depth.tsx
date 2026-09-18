@@ -29,14 +29,19 @@ export function RetreatDepth({ children }: { children: ReactNode }) {
           ? Math.max(0, Math.min(1, -rect.top / Math.max(1, scene.offsetHeight - viewport.offsetHeight)))
           : ease(innerHeight - rect.top, 0, innerHeight + rect.height);
         if (kind === "drop") {
-          scene.style.setProperty("--portrait", String(1 - ease(p, .24, .54)));
-          scene.style.setProperty("--rain", String(.48 * ease(p, .2, .43) * (1 - ease(p, .62, .88))));
+          scene.style.setProperty("--portrait", String(1 - ease(p, .32, .60)));
+          scene.style.setProperty("--rain", String(.85 * ease(p, .08, .48) * (1 - ease(p, .86, .98))));
           scene.style.setProperty("--rain-y", `${p * 5}%`);
+          scene.style.setProperty("--shower-notes", String(ease(p, .66, .73) * (1 - ease(p, .86, .94))));
+          scene.style.setProperty("--shower-notes-y", `${(1 - ease(p, .66, .73)) * 12}px`);
         } else if (kind === "thoughts") {
           scene.querySelectorAll<HTMLElement>("[data-thought]").forEach((thought, i) => {
             const start = .03 + i * .105;
             thought.style.opacity = String(ease(p, start, start + .025) * (1 - ease(p, start + .065, start + .09)));
           });
+        } else if (kind === "trace") {
+          scene.style.setProperty("--trace-opacity", String(ease(p, .10, .30) * (1 - ease(p, .72, .97))));
+          scene.style.setProperty("--trace-y", `${(1 - p) * 10}px`);
         } else {
           scene.style.setProperty("--depth-opacity", String(kind === "door" ? ease(p, .04, .36) : .65 + .35 * ease(p, 0, .35)));
           scene.style.setProperty("--depth-y", `${(1 - p) * (kind === "door" ? 3 : 2)}%`);

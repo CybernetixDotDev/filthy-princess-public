@@ -32,10 +32,11 @@
 .logoTrack { position: absolute; inset: 0 0 17svh; padding-top: 46svh; pointer-events: none; }
 .travellingLogo { position: sticky; top: 46svh; width: 62vw; margin-left: auto; margin-right: 0; mix-blend-mode: screen; }
 
-.evidence { padding: 24svh 0 36svh; }
+.evidence { position: relative; padding: 12svh 0; }
+.evidenceStage { position: relative; height: 100svh; display: flex; align-items: center; overflow: clip; }
 .dress {
   position: relative;
-  width: min(86vw, 680px);
+  width: min(86vw, 54svh, 680px);
   margin-left: 3vw !important;
   isolation: isolate;
   mask-image: linear-gradient(90deg, transparent, black 11%, black 91%, transparent), linear-gradient(black 0 82%, transparent);
@@ -50,8 +51,7 @@
   background: linear-gradient(90deg, #060506c7, transparent 18%, transparent 72%, #060506a8), linear-gradient(180deg, #06050636, transparent 30%, #060506e8 100%);
 }
 .dress img { filter: saturate(.88) contrast(1.05); box-shadow: -20px 24px 50px #000, 28px 44px 100px #000d; }
-.strawberry { width: min(44vw, 300px); margin: 40svh 9vw 0 auto !important; transform: rotate(5deg); mask-image: radial-gradient(ellipse, black 48%, transparent 73%); }
-.kiss { width: min(48vw, 360px); margin: 33svh 0 0 12vw !important; transform: rotate(-12deg); mix-blend-mode: screen; opacity: .78; }
+.kiss { position: absolute; right: 3vw; bottom: 10svh; width: min(64vw, 500px); transform: rotate(-12deg); mix-blend-mode: screen; opacity: .88; }
 
 .staircase { position: relative; background: #030303; }
 .staircaseView { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; overflow: hidden; }
@@ -94,6 +94,20 @@
 /* Native enhancement; ordinary spacing carries the score without support. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
+    .evidence { height: 240svh; padding: 0 0 12svh; view-timeline-name: --opening-evidence; view-timeline-axis: block; }
+    .evidenceStage { position: sticky; top: 0; }
+    .dress { animation: dress-release linear both; animation-timeline: --opening-evidence; animation-range: contain 0% contain 100%; }
+    .kiss { animation: kiss-arrival linear both; animation-timeline: --opening-evidence; animation-range: contain 0% contain 100%; }
+    @keyframes dress-release {
+      0%, 42% { opacity: 1; transform: translateY(0) scale(1); }
+      78%, 100% { opacity: 0; transform: translateY(-2svh) scale(.96); }
+    }
+    @keyframes kiss-arrival {
+      0%, 20% { opacity: 0; transform: translateY(3svh) rotate(-15deg) scale(.88); }
+      48% { opacity: .88; transform: translateY(0) rotate(-12deg) scale(1); }
+      78%, 87% { opacity: .94; transform: translateY(-3svh) rotate(-9deg) scale(1.06); }
+      100% { opacity: 0; transform: translateY(-4svh) rotate(-9deg) scale(1.06); }
+    }
     .staircase { view-timeline-name: --stairway; view-timeline-axis: block; }
     .staircasePhoto { animation: stairway-gaze linear both; animation-timeline: --stairway; animation-range: contain 0% contain 55%; }
     @keyframes stairway-gaze { from { transform: translateY(-15svh); } to { transform: translateY(0); } }
@@ -107,9 +121,8 @@
   .secondBeat .aside { max-width: 38vw; font-size: clamp(1.5rem, 3.3vw, 3rem); }
   .logoTrack { padding-top: 29svh; }
   .travellingLogo { top: 29svh; width: 42vw; max-width: 740px; margin-right: 5vw; }
-  .dress { width: min(46vw, 680px); margin-left: 14vw !important; }
-  .strawberry { width: min(20vw, 300px); margin-right: 20vw !important; margin-top: 28svh !important; }
-  .kiss { width: min(24vw, 360px); margin-left: 25vw !important; margin-top: 38svh !important; }
+  .dress { width: min(46vw, 54svh, 680px); margin-left: 14vw !important; }
+  .kiss { width: min(38vw, 560px); right: 17vw; bottom: 14svh; }
   .overture .staircasePhoto { width: 100%; object-fit: contain; }
   .staircaseView { background: radial-gradient(ellipse at center, #241a12, #030303 75%); }
   .caught { padding-left: 12vw; }

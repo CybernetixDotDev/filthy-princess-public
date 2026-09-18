@@ -61,19 +61,18 @@
 .dressedWords .display { font-size: clamp(1.7rem, 6.7vw, 5.6rem); line-height: 1.25; }
 .dressedLine { white-space: nowrap; }
 .scribbledUn { display: inline-block; color: #d59b91; font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; font-style: italic; font-size: .8em; font-weight: 400; letter-spacing: -.09em; margin-right: .07em; transform: translateY(-.1em) rotate(-13deg); }
-.gift[data-choreographed] { height: 1300svh; }
+.gift[data-choreographed] { height: 1000svh; }
 .gift[data-choreographed] .giftStage { position: sticky; top: 0; height: 100svh; height: 100dvh; overflow: hidden; }
 .gift[data-choreographed] .photographs { position: absolute; inset: 0; isolation: isolate; }
 .gift[data-choreographed] .giftPhoto { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0 !important; visibility: hidden; }
 .gift[data-choreographed] .giftPhoto:first-child { visibility: visible; }
 .gift[data-choreographed] .giftPhoto img { width: 100%; height: 100%; object-fit: contain; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent), linear-gradient(transparent, #000 4%, #000 96%, transparent); mask-composite: intersect; mask-size: min(100vw, 66.6667dvh) min(150vw, 100dvh); mask-position: center; mask-repeat: no-repeat; }
-/* All five are 2:3 portraits. Contain preserves hair, hands, legs and clothing
+/* All four are 2:3 portraits. Contain preserves hair, hands, legs and clothing
    on both tall phones and wide displays; black edges join the source backdrop. */
 .giftPhoto:nth-child(1) img { object-position: 50% 52%; }
 .giftPhoto:nth-child(2) img { object-position: 50% 50%; }
 .giftPhoto:nth-child(3) img { object-position: 50% 51%; }
 .giftPhoto:nth-child(4) img { object-position: 48% 50%; }
-.giftPhoto:nth-child(5) img { object-position: 50% 50%; }
 .gift[data-choreographed] .darkSweep { display: block; position: absolute; z-index: 2; left: 0; right: 0; top: -25%; height: 150%; background: linear-gradient(transparent, #000a 22%, #000 43%, #000 57%, #000a 78%, transparent); transform: translateY(100%); }
 .gift[data-choreographed] .blackRise { display: block; position: absolute; z-index: 3; inset: -20% 0 0; background: linear-gradient(transparent, #000a 16%, #000 32%); transform: translateY(110%); }
 .gift[data-choreographed] .dressedWords { position: absolute; z-index: 4; inset: 0; display: grid; place-items: center; padding: 6vw; opacity: 0; }
@@ -88,12 +87,25 @@
 .silence { min-height: 65svh; }
 .undressingHold { min-height: 65svh; display: grid; place-items: center; text-align: center; }
 .undressingHold .whisper { font-size: clamp(1.15rem, 4.5vw, 1.7rem); }
-.silence[data-choreographed] { height: 305svh; }
+.silence[data-choreographed] { height: 145svh; }
 .silence[data-choreographed] .undressingHold { position: sticky; top: 0; height: 65svh; }
-.lastSilence { height: 90svh; }
-.invitation { display: block; width: fit-content; margin-left: auto; padding: 14px 0; color: #e8c9bd; font-size: clamp(1.6rem, 5.6vw, 2.5rem); font-style: italic; text-decoration: underline; text-decoration-color: #c889795e; text-decoration-thickness: 1px; text-underline-offset: 10px; }
-.invitation:hover { color: var(--ivory); text-decoration-color: currentColor; }
-.invitation:focus-visible { outline: 1px solid #e8c9bd; outline-offset: 9px; }
+.lastSilence { height: 18svh; }
+.invitation { position: relative; display: block; width: fit-content; min-height: 64px; margin-left: auto; padding: 27px 36px; color: #e8c9bd; font-size: clamp(1.6rem, 5.6vw, 2.5rem); font-style: italic; text-decoration: none; -webkit-tap-highlight-color: #c889791c; }
+.invitation > span { position: relative; z-index: 1; }
+.invitationInk { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; fill: none; stroke: #d7a294; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; opacity: .85; pointer-events: none; transition: opacity 220ms ease, stroke 220ms ease; }
+.invitationInk path { vector-effect: non-scaling-stroke; }
+.invitationStroke { stroke-dasharray: 98 100; transition: stroke-dasharray 240ms ease; }
+.invitationFlower { transform-origin: 270px 25px; transition: transform 240ms ease; }
+.invitation:hover, .invitation:focus-visible { color: var(--ivory); text-decoration: none; }
+.invitation:hover .invitationInk, .invitation:focus-visible .invitationInk { opacity: 1; stroke: #ecc1b1; }
+.invitation:hover .invitationStroke, .invitation:focus-visible .invitationStroke { stroke-dasharray: 100 100; }
+.invitation:hover .invitationFlower, .invitation:focus-visible .invitationFlower { transform: rotate(4deg); }
+.invitation:focus-visible { outline: none; }
+.invitation:focus-visible .invitationInk { stroke-width: 1.8; }
+@media (forced-colors: active) {
+  .invitationInk { stroke: LinkText; }
+  .invitation:focus-visible { outline: 2px solid Highlight; outline-offset: 4px; }
+}
 
 @media (min-width: 768px) {
   .arrivalCopy { padding: 0 0 19svh 12vw; }
@@ -116,6 +128,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .invitationInk, .invitationStroke, .invitationFlower { transition: none; }
+  .invitation:hover .invitationFlower, .invitation:focus-visible .invitationFlower { transform: none; }
   .gift[data-choreographed] { height: auto; }
   .gift[data-choreographed] .giftStage { position: relative; height: auto; overflow: visible; }
   .gift[data-choreographed] .photographs { position: static; opacity: 1 !important; }

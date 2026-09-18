@@ -32,10 +32,10 @@
 .selection button[aria-pressed="true"] { border-color: #d6a28d; background-color: #d6a28d12; }
 .selection input:focus, .selection textarea:focus { border-color: #d6a28d; }
 .selection button:focus-visible, .selection a:focus-visible { outline: 2px solid #d6a28d; outline-offset: 5px; }
-.hesitation { padding-top: 55svh; }
-.hesitation > p { display: grid; place-items: center; min-height: 65svh; text-align: center; font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 5vw, 2.5rem); }
-.hesitation > p + p { margin-top: 45svh; }
-.doorReveal { margin: 12svh -6vw 0; }
+.hesitation { padding-top: 32svh; }
+.hesitation > p { display: grid; place-items: center; min-height: 48svh; text-align: center; font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 5vw, 2.5rem); }
+.hesitation > p + p { margin-top: 18svh; }
+.doorReveal { margin: 6svh -6vw 0; }
 .door { display: block; position: relative; height: 95svh; max-width: 900px; margin: auto; mask-image: linear-gradient(0deg, transparent, #000 20%, #000 75%, transparent); }
 .door img { object-fit: cover; object-position: center; }
 @media (min-width: 800px) {
@@ -73,7 +73,7 @@
 .playWide img { object-fit: cover; object-position: 57% center; }
 .playDetail { width: 78%; height: 48svh; margin-top: 16svh; transform: rotate(-2deg); }
 .playDetail img { object-fit: cover; object-position: 82% center; }
-.crown { width: 42vw; max-width: 230px; aspect-ratio: 1.5; margin: 18svh 0 0 auto; }
+.crown { width: 86vw; max-width: 920px; aspect-ratio: 1.5; margin: 3svh -3vw 0 auto; }
 .crown img { object-fit: contain; object-position: center; }
 .note { margin: 22svh auto 0 9vw; }
 .attentionPhoto { position: absolute; inset: 0; mask-image: linear-gradient(0deg, transparent, #000 12%, #000 94%, transparent); }
@@ -98,10 +98,11 @@
 .door { mask-image: linear-gradient(0deg, transparent, #000 20%, #000 75%, transparent), linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent); mask-composite: intersect; }
 .door img { object-position: 50% center; }
 @media (prefers-reduced-motion: no-preference) {
-  .composition[data-motion] .attentionDrop { height: 340svh; }
+  .composition[data-motion] .attentionDrop { height: 380svh; }
   .composition[data-motion] .dropViewport { position: sticky; top: 0; height: 100svh; }
   .composition[data-motion] .attentionPhoto { opacity: var(--portrait, 1); }
   .composition[data-motion] .rain { opacity: var(--rain, 0); transform: translateY(var(--rain-y, 0%)); }
+  .composition[data-motion] .showerNotes { display: block; opacity: var(--shower-notes, 0); transform: translateY(var(--shower-notes-y, 12px)); }
   .composition[data-motion] .approach { height: 310svh; }
   .composition[data-motion] .approachViewport { position: sticky; top: 0; height: 100svh; }
   .composition[data-motion] .thoughts { display: block; }
@@ -118,8 +119,25 @@
   .playWide { width: 90%; margin-left: auto; }
   .playWide img { object-position: center; }
   .playDetail { margin: 12svh 0 0; width: 42%; height: 60svh; }
-  .crown { margin-right: 12%; }
+  .crown { width: 64vw; margin-right: -3vw; }
   .note { margin-left: 28%; }
   .attentionPhoto img { object-position: center; }
   .door { height: 110svh; }
+}
+.annotation, .showerNotes { font-family: "Bradley Hand", "Segoe Print", cursive; color: #e4b6a1; font-size: clamp(1.8rem, 7vw, 3.5rem); line-height: 1.2; pointer-events: none; }
+.annotation { position: absolute; z-index: 1; }
+.dressNote { top: 17%; left: 9%; transform: rotate(-8deg); }
+.giggleNote { bottom: 18%; left: 12%; transform: rotate(6deg); }
+.underline { display: block; height: .18em; margin-top: .12em; border-bottom: 2px solid currentColor; border-radius: 50%; transform: rotate(-4deg); }
+.showerNotes { display: none; position: absolute; inset: 0; }
+.showerNotes > span { position: absolute; }
+.showerNotes > span:first-child { top: 32%; left: 9%; transform: rotate(-7deg); }
+.showerNotes > span:last-child { top: 64%; right: 12%; font-size: .7em; transform: rotate(5deg); }
+.decadenceNote { bottom: 18%; right: 12%; font-size: clamp(1.8rem, 7vw, 4rem); transform: rotate(-6deg); }
+.blackTrace { position: relative; height: 34svh; margin-top: 6svh; color: #d2a28f; font-family: "Bradley Hand", "Segoe Print", cursive; font-size: clamp(1.7rem, 6vw, 2.8rem); pointer-events: none; }
+.blackTrace > span { position: absolute; top: 40%; right: 14%; transform: rotate(8deg); }
+.afterthought { height: 24svh; margin-top: 10svh; color: #ae8b7c; font-size: clamp(1.1rem, 4vw, 1.6rem); }
+.afterthought > span { left: 11%; right: auto; top: 48%; transform: rotate(-9deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .composition[data-motion] [data-depth="trace"] { opacity: var(--trace-opacity, 0); transform: translateY(var(--trace-y, 10px)); }
 }

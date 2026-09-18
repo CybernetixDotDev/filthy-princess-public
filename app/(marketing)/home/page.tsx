@@ -25,15 +25,14 @@ export default function HomePage() {
       </section>
 
       <section className={styles.evidence} aria-label="Traces left behind">
-        <figure className={styles.dress}>
-          <Image src="/1afterMidnightDress.png" alt="A dark embroidered dress left on the floor beside a bed." width={1024} height={1536} sizes="(max-width: 767px) 82vw, 42vw" />
-        </figure>
-        <figure className={styles.strawberry}>
-          <Image src="/strawberry2.png" alt="A ripe strawberry." width={1024} height={1024} sizes="(max-width: 767px) 44vw, 20vw" />
-        </figure>
-        <figure className={styles.kiss}>
-          <Image src="/lipstickKiss.png" alt="A lipstick kiss left behind." width={1536} height={1024} sizes="(max-width: 767px) 48vw, 24vw" />
-        </figure>
+        <div className={styles.evidenceStage}>
+          <figure className={styles.dress}>
+            <Image src="/1afterMidnightDress.png" alt="A dark embroidered dress left on the floor beside a bed." width={1024} height={1536} sizes="(max-width: 767px) 82vw, 42vw" />
+          </figure>
+          <figure className={styles.kiss}>
+            <Image src="/lipstickKiss.png" alt="A lipstick kiss left behind." width={1536} height={1024} sizes="(max-width: 767px) 64vw, 38vw" />
+          </figure>
+        </div>
       </section>
 
       <section className={styles.staircase} aria-labelledby="looked-title">

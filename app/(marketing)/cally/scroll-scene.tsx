@@ -7,10 +7,9 @@ const soften = (value: number) => {
   const t = clamp(value);
   return t * t * (3 - 2 * t);
 };
-// 1200svh of sticky travel: preserve the first four 108svh holds,
-// extend each transition from 54 to 96svh, then hold Image 5 for 216svh.
-// The final rise occupies 120svh before the closing words settle.
-const transitions = [[.09, .17], [.26, .34], [.43, .51], [.60, .68]] as const;
+// Keep the retained portraits' 108svh holds and 96svh transitions.
+// The fourth portrait exits over 96svh, followed by 18svh of clean black.
+const transitions = [[.09, .17], [.26, .34], [.43, .51]] as const;
 
 export function ScrollScene({ kind, className, children }: {
   kind: "photographs" | "silence";
@@ -39,9 +38,11 @@ export function ScrollScene({ kind, className, children }: {
       const bounds = node!.getBoundingClientRect();
       const stageHeight = stage.offsetHeight;
       const viewport = window.innerHeight;
-      const progress = clamp(-bounds.top / Math.max(1, bounds.height - stageHeight));
+      const sceneProgress = clamp(-bounds.top / Math.max(1, bounds.height - stageHeight));
+      // Shorter photo track, same physical pace for the three retained transitions.
+      const progress = kind === "photographs" ? sceneProgress * .75 : sceneProgress;
       if (kind === "silence") {
-        // Hold, release over 132svh, then leave 72svh of fully black travel.
+        // Brief hold, release over 44svh, then 24svh of fully black travel.
         words.style.opacity = String(1 - soften((progress - .15) / .55));
         return;
       }
@@ -57,7 +58,7 @@ export function ScrollScene({ kind, className, children }: {
       photos.forEach((photo, index) => {
         const arriving = sweepProgress >= 0 && index === current + 1;
         const departing = index === current;
-        photo.style.visibility = departing || arriving ? "visible" : "hidden";
+        photo.style.visibility = progress < .68 && (departing || arriving) ? "visible" : "hidden";
         photo.style.zIndex = departing ? "1" : "0";
         // Two staggered releases through the moving black field, rather than
         // a midpoint image swap or a continuously dissolving slideshow.
@@ -66,19 +67,22 @@ export function ScrollScene({ kind, className, children }: {
           : departing && sweepProgress >= 0
             ? 1 - soften((sweepProgress - .12) / .56)
             : 1);
-        // Request the next photograph before its transition, not all five at arrival.
+        // Request the next photograph before its transition.
         if (bounds.top < viewport * 1.5 && index <= current + 1) {
           const image = photo.querySelector("img");
           if (image) image.loading = "eager";
         }
       });
-      if (field) field.style.opacity = String(clamp(1 - bounds.top / viewport));
+      if (field) {
+        field.style.opacity = String(clamp(1 - bounds.top / viewport) * (1 - soften((progress - .60) / .08)));
+        field.style.visibility = progress >= .68 ? "hidden" : "visible";
+      }
       if (sweep) {
         sweep.style.visibility = sweepProgress < 0 ? "hidden" : "visible";
         sweep.style.transform = `translateY(${sweepProgress < 0 ? 100 : 100 - soften(sweepProgress) * 200}%)`;
       }
-      if (rise) rise.style.transform = `translateY(${(1 - soften((progress - .86) / .10)) * 130 - 20}%)`;
-      words.style.opacity = String(soften((progress - .94) / .045));
+      if (rise) rise.style.transform = `translateY(${(1 - soften((progress - .60) / .08)) * 130 - 20}%)`;
+      words.style.opacity = String(soften((progress - .695) / .03375));
     }
 
     function schedule() {

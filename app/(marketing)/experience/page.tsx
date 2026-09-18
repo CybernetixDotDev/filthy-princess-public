@@ -11,7 +11,6 @@ export default function ExperiencePage() {
       <DropScene>
         <div className={styles.viewport} data-viewport>
           <div className={styles.world} aria-hidden="true">
-            <div className={styles.warmth} />
             <div className={`${styles.plane} ${styles.companion}`}><Image src="/assets/CompanionToWavesOfSatin.png" alt="" fill sizes="100vw" loading="eager" /></div>
             <div className={`${styles.plane} ${styles.satin}`}><Image src="/assets/wavesOfSatin.png" alt="" fill sizes="100vw" loading="eager" /></div>
             <div className={`${styles.plane} ${styles.hero}`}><Image src="/8ExperienceHero.png" alt="" fill sizes="(max-width: 640px) 180vw, 100vw" loading="eager" fetchPriority="high" /></div>
