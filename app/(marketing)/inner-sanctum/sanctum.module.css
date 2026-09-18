@@ -1,0 +1,48 @@
+﻿.sanctum { --ivory: #f1e8dc; background: #080808; color: var(--ivory); overflow: clip; }
+.hero { position: relative; display: flex; align-items: flex-end; min-height: 82svh; padding: 9rem 6vw 5rem; }
+.heroImage { object-fit: cover; object-position: 70% center; }
+.shade { position: absolute; inset: 0; background: linear-gradient(90deg, #0007, transparent 75%), linear-gradient(0deg, #080808, #08080826 55%, #0003); }
+.heroCopy { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; }
+.heroTitle { max-width: 17ch; margin-top: 1.5rem; font-size: clamp(2.6rem, 6.5vw, 6.5rem); line-height: .98; }
+.aside { margin-top: 1.8rem; max-width: 28rem; color: #e0c9bf; font-size: 1.1rem; line-height: 1.7; }
+.privateWorld { padding: 5rem 6vw 3rem; }
+.glimpse { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); }
+.title { max-width: 13ch; margin-top: 1.4rem; font-size: clamp(2.25rem, 4vw, 4rem); line-height: 1; }
+.storyCopy { margin-top: 2rem; font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.8; color: #c9bfba; }
+.storyCopy p + p { margin-top: 1.25rem; }
+.storyCopy em { display: inline-block; margin-top: .4rem; font-family: var(--font-display); font-size: 1.7em; color: var(--ivory); }
+.thought { font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; font-size: clamp(1.1rem, 2vw, 1.5rem); color: #e4ada5; line-height: 1.5; }
+.turn { display: flex; align-items: center; justify-content: flex-end; gap: .5rem; margin: .5rem 0 1.2rem; }
+.turn .thought { transform: rotate(-7deg); }
+.strawberry { width: 66px; height: 66px; object-fit: contain; transform: rotate(14deg); }
+.description { max-width: 46ch; color: #a99e98; font-size: .9rem; line-height: 1.8; }
+.cally { position: relative; padding-bottom: 2rem; }
+.portrait { display: block; width: 100%; height: auto; mask-image: linear-gradient(#000 88%, transparent); }
+.caught { position: absolute; bottom: .25rem; right: 8%; }
+.caught .thought { transform: rotate(-5deg); }
+.bow { position: absolute; top: 8%; left: -34px; width: 74px; height: 74px; object-fit: contain; transform: rotate(-19deg); }
+.decision { position: relative; max-width: 1280px; margin: auto; padding: 1rem 6vw 6rem; }
+.keepsake { display: flex; align-items: center; width: fit-content; margin: 0 0 2rem 12%; gap: .6rem; }
+.key { width: 80px; height: 100px; object-fit: contain; transform: rotate(20deg); }
+.keepsake .thought { font-size: 1rem; transform: rotate(5deg); }
+.handoff { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-top: 1.8rem; }
+.endingTitle { font-size: clamp(2.8rem, 5.5vw, 5.5rem); line-height: .98; }
+.invitation { flex-shrink: 0; font-family: var(--font-display); font-size: clamp(1.3rem, 2.3vw, 1.8rem); white-space: nowrap; }
+@media (max-width: 767px) {
+  .hero { min-height: 78svh; padding: 9rem 6vw 3rem; }
+  .heroImage { object-position: 73% center; }
+  .shade { background: linear-gradient(0deg, #080808 0%, #080808c9 24%, #0808080d 75%); }
+  .privateWorld { padding-top: 3rem; }
+  .glimpse { grid-template-columns: 1fr; gap: 2.5rem; }
+  .title { max-width: 17ch; }
+  .storyCopy { margin-top: 1.5rem; }
+  .turn { margin-block: 0 1rem; }
+  .cally { width: 94%; margin-left: auto; }
+  .bow { left: -25px; top: 13%; width: 62px; height: 62px; }
+  .decision { padding-bottom: 4rem; }
+  .keepsake { margin-left: 0; margin-bottom: 2rem; }
+  .handoff { flex-direction: column; align-items: flex-start; gap: 1.8rem; }
+  .invitation { margin-left: 0; }
+}
+
+.key { mix-blend-mode: screen; mask-image: radial-gradient(ellipse, #000 42%, transparent 72%); }
