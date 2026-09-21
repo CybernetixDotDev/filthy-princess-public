@@ -1,0 +1,86 @@
+.experience { position: relative; isolation: isolate; background: #0c0b0c; color: #f4eee6; overflow-x: clip; }
+.anchor { position: fixed; inset: 0; z-index: -1; background: #0c0b0c; }
+.cally { object-fit: cover; object-position: 49% top; }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, #0c0b0c33, transparent 35%, #0c0b0c30 55%, #0c0b0cdd 100%); }
+.content { position: relative; }
+.masthead { position: absolute; inset: 0 0 auto; z-index: 3; padding: 24px; display: flex; justify-content: space-between; align-items: start; }
+.wordmark { font-family: var(--font-display); font-size: 21px; text-shadow: 0 2px 12px #000; }
+.wordmark span { display: block; margin-top: 5px; font: 8px var(--font-sans); text-transform: uppercase; letter-spacing: .23em; }
+.skip { position: absolute; top: 20px; right: 20px; padding: 12px; background: #0c0b0c; transform: translateY(-200%); }
+.skip:focus-visible { transform: none; outline: 2px solid #e8a5bb; }
+.hero { min-height: 100svh; display: flex; align-items: end; padding: 44svh 24px 32px; }
+.invitation { max-width: 590px; text-shadow: 0 2px 20px #000; }
+.eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: .25em; color: #f4cbd4; margin-bottom: 16px; }
+.invitation h1 { font-family: var(--font-display); font-size: clamp(42px, 10vw, 84px); line-height: .98; letter-spacing: -.045em; text-wrap: balance; overflow-wrap: anywhere; }
+.body { margin-top: 20px; max-width: 430px; font-size: 16px; line-height: 1.65; white-space: pre-line; overflow-wrap: anywhere; }
+.scrollHint { margin-top: 32px; font-size: 9px; text-transform: uppercase; letter-spacing: .22em; color: #e8a5bb; }
+.scrollHint span { margin-left: 18px; font-size: 18px; }
+.journey { padding-top: 8svh; }
+.phraseMoment { min-height: 28svh; display: flex; align-items: center; padding: 32px 24px; }
+.graffiti { width: fit-content; max-width: min(80%, 520px); font-family: "Segoe Print", "Bradley Hand", cursive; font-style: italic; font-size: clamp(25px, 6vw, 52px); line-height: 1.25; color: #f4cbd4; text-shadow: 0 2px 6px #000, 0 0 28px #000; overflow-wrap: anywhere; text-wrap: balance; }
+.placement0 { margin-left: 2%; rotate: -5deg; }
+.placement1 { margin-left: auto; rotate: 4deg; font-size: clamp(22px, 5vw, 40px); }
+.placement2 { margin-left: 8%; rotate: -2deg; color: #f4eee6; }
+.placement3 { margin-left: auto; margin-right: 4%; rotate: 3deg; }
+.photoMoment { position: relative; min-height: 65svh; display: flex; align-items: center; padding: 60px 30px; }
+.polaroid { position: relative; z-index: 1; width: min(72vw, 340px); padding: 10px 10px 34px; background: #f4eee6; box-shadow: 0 15px 45px #0008; rotate: -5deg; margin: 0; }
+.slot1 .polaroid { margin-left: auto; rotate: 4deg; }
+.slot2 .polaroid { margin-inline: auto; rotate: -2deg; }
+.photo { position: relative; aspect-ratio: 4 / 5; background: #ded6cc; }
+.photo img { object-fit: contain; }
+.thread { position: absolute; width: 125%; height: 110px; left: -12%; top: -75px; color: #e9cca7; overflow: visible; pointer-events: none; }
+.peg { position: absolute; z-index: 2; top: -17px; left: 48%; width: 12px; height: 30px; background: linear-gradient(90deg, #886447, #d9b68e 45%, #9a7857 55%, #c7a47a); rotate: 6deg; box-shadow: 2px 3px 5px #0005; }
+.heart { position: absolute; bottom: 1px; right: 18px; color: #a94860; font: 26px "Segoe Print", cursive; }
+.honey { position: fixed; inset: 0; overflow: hidden; opacity: .018; pointer-events: none; }
+/* Two identical vertical tiles make the downward-only loop seamless at its reset. */
+.honeyTexture { position: absolute; inset: 0; height: 200%; background: url("/RainOverlayZoomedout.png") center top / 100% 50% repeat-y; transform: translateY(-50%); }
+.strawberries img { object-fit: cover; }
+.reveal0 { --covered: polygon(0 0, 0 0, 0 100%, 0 100%); }
+.reveal1 { --covered: polygon(0 0, 0 0, 0 0, 0 0); }
+.reveal2 { --covered: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+.reveal3 { --covered: polygon(51% 0, 51% 0, 51% 100%, 51% 100%); }
+@media (prefers-reduced-motion: no-preference) {
+  .honeyTexture { animation: honeyFall 32s linear infinite; }
+}
+.finale { position: relative; min-height: 90svh; margin-top: 12svh; display: flex; align-items: end; justify-content: center; padding: 50svh 24px 14svh; scroll-margin-top: 0; }
+.strawberries { position: absolute; inset: 0; pointer-events: none; opacity: .45; mask-image: linear-gradient(transparent, #000 35%, #000 90%, transparent); }
+.enter { position: relative; text-align: center; }
+.enterButton { min-height: 64px; min-width: 210px; padding: 18px 38px; border: 1px solid #e8a5bb; background: #0c0b0cdd; color: #f4eee6; font-size: 16px; letter-spacing: .32em; cursor: pointer; box-shadow: 0 0 40px #e8a5bb20; transition: background .2s, box-shadow .2s; }
+.enterButton:hover { background: #4a2437; box-shadow: 0 0 44px #e8a5bb40; }
+.enterButton:focus-visible { outline: 2px solid #f4eee6; outline-offset: 6px; }
+.enterButton:disabled { cursor: wait; opacity: .6; }
+.unavailable { font-family: var(--font-display); font-style: italic; font-size: 25px; text-shadow: 0 2px 12px #000; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .polaroid { animation: encounter linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    .graffiti { animation: uncover linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    .strawberries { animation: strawberryArrival linear both; animation-timeline: view(); }
+  }
+}
+@keyframes encounter { 0% { opacity: 0; transform: translateY(28px); } 18%, 48% { opacity: 1; transform: translateY(0); } 72%, 100% { opacity: 0; transform: translateY(-16px); } }
+@keyframes honeyFall { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+@keyframes uncover {
+  0%, 5% { clip-path: var(--covered); opacity: 1; transform: translateX(3px); }
+  36%, 65% { clip-path: polygon(-8% -30%, 108% -30%, 108% 130%, -8% 130%); opacity: 1; transform: translateX(0); }
+  88%, 100% { clip-path: polygon(-8% -30%, 108% -30%, 108% 130%, -8% 130%); opacity: 0; transform: translateX(-2px); }
+}
+@keyframes strawberryArrival { 0% { opacity: 0; transform: translateY(-25px); } 45%, 100% { opacity: .5; transform: translateY(0); } }
+@media (min-width: 768px) {
+  .masthead { padding: 32px 5vw; }
+  .hero { padding: 30svh 7vw 7svh; }
+  .invitation { max-width: 43vw; }
+  .shade { background: linear-gradient(90deg, #0c0b0ca6, transparent 55%), linear-gradient(0deg, #0c0b0c99, transparent 50%); }
+  .phraseMoment { padding-inline: 9vw; }
+  .graffiti { max-width: 38%; }
+  .photoMoment { padding-inline: 12vw; }
+  .slot2 .polaroid { margin-left: 10%; margin-right: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip { position: static; transform: none; font-size: 11px; }
+  .phraseMoment { min-height: 0; padding-block: 32px; }
+  .photoMoment { min-height: 0; padding-block: 80px; }
+  .honey { opacity: .025 !important; }
+  .graffiti { clip-path: none; }
+  .strawberries { opacity: .2; }
+  .enterButton { transition: none; }
+}

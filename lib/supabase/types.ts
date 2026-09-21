@@ -15,13 +15,6 @@ export type PublicStoreProduct = {
   sort_order: number;
 };
 
-export type PublicStoreOrderResult = {
-  order_reference: string;
-  order_status: "pending" | "paid" | "cancelled" | "failed";
-  currency: string;
-  total_amount: number;
-};
-
 export type PublicInvitableEvent = {
   id: string;
   slug: string;
