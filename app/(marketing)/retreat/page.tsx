@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/editorial/reveal";
 import Image from "next/image";
-import Link from "next/link";
+import { realmJoinHref } from "@/lib/realm-handoff";
 import { RetreatInterest } from "@/components/retreat/retreat-interest";
 import { getPublicRetreatProducts } from "@/lib/supabase/retreats";
 import styles from "./retreat.module.css";
@@ -10,6 +10,7 @@ export const metadata = { title: "The Retreat", description: "The Retreat." };
 
 export default async function RetreatPage() {
   const products = await getPublicRetreatProducts();
+  const joinHref = realmJoinHref();
   return (
     <main className={`${styles.retreat} bg-(--fp-black) text-(--fp-dirty-white)`}>
       <section className="relative overflow-hidden bg-(--fp-black)">
@@ -67,12 +68,18 @@ export default async function RetreatPage() {
           <div className={styles.selection}>
             <RetreatInterest products={products.data} continuation={
               <div key="retreat-continuation" className={styles.hesitation}>
-                <p>not ready?</p>
-                <p data-depth="drift">you don&apos;t have to leave.</p>
+                <p>Not ready to run away with me?</p>
+                <p data-depth="drift">That&apos;s okay.<br />You don&apos;t have to leave.</p>
+                <div className={styles.realmInvitation}>
+                  <p className={styles.realmLead}>There is another door.</p>
+                  <h3>Enter the Filthy Princess Realm.</h3>
+                  <p>Create your account for free. Bring your ideas, your skills, your audience &mdash; or just come see what we&apos;re building.</p>
+                  <a href={joinHref} className={styles.realmLink}>ENTER THE REALM <span aria-hidden="true">&rarr;</span></a>
+                </div>
                 <div className={styles.doorReveal} data-depth="door">
-                  <Link href="/inner-sanctum" className={styles.door} aria-label="Enter the Inner Sanctum">
+                  <a href={joinHref} className={styles.door} aria-label="Enter the Filthy Princess Realm ? create your account for free">
                     <Image src="/StoneDoorway.png" alt="A flower-covered stone doorway emerging from darkness" fill sizes="(max-width: 700px) 100vw, 900px" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             } />

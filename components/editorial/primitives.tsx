@@ -1,3 +1,4 @@
+import { realmJoinHref } from "@/lib/realm-handoff";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
@@ -97,7 +98,7 @@ export function BombStage() {
 }
 
 export function SiteFrame({ children, showEvents }: { children: React.ReactNode; showEvents: boolean }) {
-  return <div className="min-h-screen overflow-hidden bg-[#100e0d] text-[#f5eee7]"><SiteNav showEvents={showEvents} />{children}<footer className="border-t border-white/10 px-5 py-8 text-xs text-white/45 sm:px-8"><div className="mx-auto flex max-w-7xl justify-between"><span>Filthy Princess</span><span>For the beautifully curious.</span></div></footer></div>;
+  return <div className="min-h-screen overflow-hidden bg-[#100e0d] text-[#f5eee7]"><SiteNav showEvents={showEvents} joinHref={realmJoinHref()} />{children}<footer className="border-t border-white/10 px-5 py-8 text-xs text-white/45 sm:px-8"><div className="mx-auto flex max-w-7xl justify-between"><span>Filthy Princess</span><span>For the beautifully curious.</span></div></footer></div>;
 }
 
 export function EditorialHero({ kicker, title, intro, children, tone = "rose" }: { kicker: string; title: React.ReactNode; intro?: string; children?: React.ReactNode; tone?: PlaceholderProps["tone"] }) {
