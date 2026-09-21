@@ -1,3 +1,4 @@
+import { teaserEnterHref } from "@/lib/teaser-destination";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { TeaserExperience } from "@/components/teaser/teaser-experience";
@@ -29,6 +30,6 @@ export default async function TeaserPage({ params }: Props) {
     body={teaser.body}
     graffiti={teaser.graffiti_lines ?? []}
     images={images}
-    productId={teaser.store_product_active ? teaser.store_product_id : null}
+    enterHref={teaserEnterHref(teaser)}
   />;
 }

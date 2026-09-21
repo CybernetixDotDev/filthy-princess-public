@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { StorePurchaseForm } from "@/components/store/store-purchase-form";
 import { HoneyAtmosphere } from "./honey-atmosphere";
 import styles from "./teaser.module.css";
 
@@ -10,7 +9,7 @@ type Props = {
   body: string | null;
   graffiti: string[];
   images: { url: string; slot: number }[];
-  productId: string | null;
+  enterHref: string | null;
 };
 
 function HangingThread() {
@@ -29,7 +28,7 @@ function HangingThread() {
   </svg>;
 }
 
-export function TeaserExperience({ eyebrow, title, body, graffiti, images, productId }: Props) {
+export function TeaserExperience({ eyebrow, title, body, graffiti, images, enterHref }: Props) {
   // Distribute ordered phrases before each photograph and before the finale.
   const groups = Array.from({ length: images.length + 1 }, (_, group) => {
     const start = Math.floor(group * graffiti.length / (images.length + 1));
@@ -46,7 +45,7 @@ export function TeaserExperience({ eyebrow, title, body, graffiti, images, produ
     <div className={styles.content}>
       <header className={styles.masthead}>
         <Link href="/home" className={styles.wordmark}>Filthy Princess<span>A private invitation</span></Link>
-        {productId && <a href="#enter" className={styles.skip}>Go to ENTER</a>}
+        {enterHref && <a href="#enter" className={styles.skip}>Go to ENTER</a>}
       </header>
       <section className={styles.hero} aria-labelledby="teaser-title">
         <div className={styles.invitation}>
@@ -78,8 +77,8 @@ export function TeaserExperience({ eyebrow, title, body, graffiti, images, produ
           <Image src="/goldenStrawberryRain.png" alt="" fill sizes="100vw" />
         </div>
         <div className={styles.enter}>
-          {productId
-            ? <StorePurchaseForm productId={productId} label="ENTER" buttonClassName={styles.enterButton} />
+          {enterHref
+            ? <a href={enterHref} className={styles.enterButton}>ENTER</a>
             : <p className={styles.unavailable}>This invitation is resting.</p>}
         </div>
       </section>

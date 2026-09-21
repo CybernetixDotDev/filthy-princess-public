@@ -14,6 +14,8 @@ export type PublishedTeaser = {
   image_2_path: string | null;
   image_3_path: string | null;
   visibility: "private" | "public";
+  destination_type: "store" | "promo";
+  promo_destination: "contribute" | null;
   store_product_id: string | null;
   store_product_active: boolean;
   published_at: string;
